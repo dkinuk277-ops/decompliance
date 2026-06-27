@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeCompliance – AI Governance, Risk & Compliance Intelligence</title>
+  <meta name="description" content="Your trusted source for AI GRC insights, regulatory updates, and governance frameworks. Stay ahead of the curve with DeCompliance."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --snow: #1C0E04;
+      --snow-deep: #150A02;
+      --snow-white: #241206;
+      --pale-yellow: #2A1608;
+      --warm-yellow: #FFD166;
+      --gold: #F5A623;
+      --gold-dark: #FFD166;
+      --ink: #FFEFC0;
+      --ink-soft: #FFE0A0;
+      --slate: rgba(255,239,192,0.65);
+      --muted: rgba(255,239,192,0.38);
+      --accent-teal: #FFD166;
+      --accent-teal-light: rgba(245,166,35,0.1);
+      --border: rgba(245,166,35,0.18);
+      --border-light: rgba(245,166,35,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #1C0E04;
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── SNOWFLAKES ── */
+    .snow-layer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .flake {
+      position: absolute;
+      top: -20px;
+      color: rgba(245,166,35,0.15);
+      font-size: 1rem;
+      animation: fall linear infinite;
+      user-select: none;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(28,14,4,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--ink) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-dark) !important; color: #fff !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 7rem 5vw 5rem;
+      background: linear-gradient(160deg, #241206 0%, #2A1608 55%, #1C0E04 100%);
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gold-dark);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(245,166,35,0.1);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow::before { content: '◆'; font-size: 0.6rem; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+      max-width: 800px;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+      position: relative;
+    }
+    .hero h1 em::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      opacity: 0.4;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--slate);
+      max-width: 580px;
+      margin: 0 auto 2.8rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+      padding: 0.85rem 2.2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-dark); color: #fff; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: #FFEFC0;
+      padding: 0.85rem 2.2rem;
+      border-radius: 5px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,239,192,0.4);
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: rgba(255,239,192,0.08); color: #FFEFC0; }
+
+    .hero-stats {
+      display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(245,166,35,0.18);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 700;
+      color: var(--ink); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 5vw; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold-dark);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1rem; color: var(--slate);
+      max-width: 560px; margin: 0 auto;
+      font-weight: 300; line-height: 1.8;
+    }
+
+    /* ── WHAT IS AI GRC ── */
+    .what-grc {
+      background: #241206;
+      padding: 6rem 0;
+      border-bottom: 1px solid rgba(245,166,35,0.1);
+    }
+    .grc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 3rem;
+      background: rgba(245,166,35,0.08);
+      border: 1px solid rgba(245,166,35,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .grc-pillar {
+      background: var(--snow-white);
+      padding: 2.5rem 2rem;
+    }
+    .grc-pillar:hover { background: var(--pale-yellow); }
+    .pillar-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem; font-weight: 700;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .pillar-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 0.8rem;
+    }
+    .pillar-desc { font-size: 0.9rem; color: var(--slate); line-height: 1.7; }
+
+    /* ── WHY AI GRC MATTERS ── */
+    .why-matters {
+      background: #150A02;
+      padding: 6rem 0;
+      color: var(--ink);
+    }
+    .why-matters .section-title { color: #FFEFC0; }
+    .why-matters .section-desc { color: rgba(255,239,192,0.6); }
+    .why-matters .section-eyebrow { color: #FFD166; }
+    .matters-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .matter-card {
+      background: rgba(245,166,35,0.05);
+      border: 1px solid rgba(245,166,35,0.12);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .matter-card:hover {
+      border-color: rgba(245,166,35,0.35);
+      background: rgba(245,166,35,0.08);
+    }
+    .matter-icon {
+      width: 44px; height: 44px;
+      background: rgba(245,166,35,0.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .matter-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: #FFEFC0; margin-bottom: 0.6rem;
+    }
+    .matter-card p { font-size: 0.88rem; color: rgba(255,239,192,0.55); line-height: 1.7; }
+
+    /* ── REGULATORY LANDSCAPE ── */
+    .regulatory {
+      padding: 6rem 0;
+      background: #1C0E04;
+    }
+    .reg-timeline {
+      position: relative;
+      margin-top: 3rem;
+    }
+    .reg-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .reg-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .reg-item::before {
+      content: '';
+      position: absolute;
+      left: -4px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .reg-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--gold-dark);
+      white-space: nowrap;
+      padding-top: 2px;
+      min-width: 80px;
+    }
+    .reg-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 0.4rem;
+    }
+    .reg-content p { font-size: 0.88rem; color: var(--slate); line-height: 1.7; }
+    .reg-content a {
+      color: var(--accent-teal);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.82rem;
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+    .reg-content a:hover { text-decoration: underline; }
+
+    /* ── LATEST INSIGHTS ── */
+    .insights {
+      padding: 6rem 0;
+      background: #241206;
+    }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .insight-card {
+      border: 1px solid rgba(245,166,35,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1C0E04;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .insight-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.3); transform: translateY(-3px); }
+    .insight-tag-bar {
+      padding: 1.5rem 1.8rem 0;
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; font-weight: 500;
+      color: var(--gold-dark);
+      background: rgba(212,160,23,0.1);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .insight-body { padding: 1.2rem 1.8rem 1.8rem; }
+    .insight-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: #FFEFC0; margin-bottom: 0.6rem; line-height: 1.35;
+    }
+    .insight-body p { font-size: 0.87rem; color: var(--slate); line-height: 1.7; margin-bottom: 1rem; }
+    .insight-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.78rem; color: var(--muted);
+    }
+    .read-more {
+      color: var(--accent-teal);
+      text-decoration: none; font-weight: 500; font-size: 0.82rem;
+    }
+    .read-more:hover { text-decoration: underline; }
+
+    /* ── FRAMEWORKS ── */
+    .frameworks {
+      padding: 6rem 0;
+      background: linear-gradient(to bottom, #2A1608, #1C0E04);
+    }
+    .framework-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .fw-card {
+      background: #241206;
+      border: 1px solid rgba(245,166,35,0.15);
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .fw-card:hover { border-color: #F5A623; box-shadow: 0 4px 20px rgba(245,166,35,0.15); }
+    .fw-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 500;
+      background: rgba(245,166,35,0.1);
+      color: #FFD166;
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .fw-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 600;
+      color: #FFEFC0; margin-bottom: 0.5rem;
+    }
+    .fw-card p { font-size: 0.84rem; color: var(--slate); line-height: 1.65; }
+    .fw-card a {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.8rem; color: var(--accent-teal);
+      text-decoration: none; font-weight: 500;
+    }
+    .fw-card a:hover { text-decoration: underline; }
+
+    /* ── TOPICS COVERAGE ── */
+    .topics {
+      padding: 6rem 0;
+      background: #241206;
+    }
+    .topics-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .topic-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.3rem 1.5rem;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      background: #1C0E04;
+      transition: border-color 0.2s;
+    }
+    .topic-item:hover { border-color: #F5A623; background: rgba(245,166,35,0.07); }
+    .topic-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 6px; flex-shrink: 0;
+    }
+    .topic-text strong { display: block; font-size: 0.92rem; color: #FFEFC0; font-weight: 600; }
+    .topic-text span { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── NEWSLETTER SECTION ── */
+    .newsletter {
+      padding: 6rem 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245,166,35,0.06), transparent 70%);
+      pointer-events: none;
+    }
+    .newsletter .section-title { color: #FFEFC0; }
+    .newsletter .section-desc { color: rgba(255,239,192,0.6); }
+    .newsletter .section-eyebrow { color: #FFD166; }
+
+    .subscribe-box {
+      max-width: 560px; margin: 3rem auto 0;
+      background: rgba(245,166,35,0.05);
+      border: 1px solid rgba(245,166,35,0.15);
+      border-radius: 14px;
+      padding: 2.5rem;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.78rem; font-weight: 500;
+      color: rgba(255,239,192,0.55);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .form-group input {
+      background: rgba(245,166,35,0.07);
+      border: 1px solid rgba(245,166,35,0.15);
+      color: var(--snow);
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input::placeholder { color: rgba(255,239,192,0.3); }
+    .form-group input:focus { border-color: var(--gold); }
+    .subscribe-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--ink);
+      border: none; cursor: pointer;
+      padding: 0.9rem;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+    .subscribe-btn:hover { background: var(--warm-yellow); transform: translateY(-1px); }
+    .subscribe-note {
+      text-align: center; font-size: 0.75rem;
+      color: rgba(255,239,192,0.35);
+      margin-top: 1rem;
+    }
+    .subscribe-success {
+      display: none; text-align: center; padding: 1.5rem;
+    }
+    .subscribe-success h3 {
+      font-family: 'Playfair Display', serif;
+      color: #FFD166; font-size: 1.3rem; margin-bottom: 0.5rem;
+    }
+    .subscribe-success p { color: rgba(255,239,192,0.6); font-size: 0.88rem; }
+
+    /* ── ABOUT / FOUNDER ── */
+    .about {
+      padding: 6rem 0;
+      background: var(--pale-yellow);
+      border-top: 1px solid rgba(245,166,35,0.18);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .founder-card {
+      background: #241206;
+      border: 1px solid rgba(245,166,35,0.15);
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .founder-avatar {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--gold), var(--ink));
+      border-radius: 50%;
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: #fff;
+    }
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: #FFEFC0;
+      margin-bottom: 0.4rem;
+    }
+    .founder-tags {
+      display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 0.8rem;
+    }
+    .founder-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; font-weight: 500;
+      background: rgba(245,166,35,0.1); color: #FFD166;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700; color: #FFEFC0;
+      margin-bottom: 1.2rem; line-height: 1.25;
+    }
+    .about-text p {
+      font-size: 0.95rem; color: var(--slate);
+      line-height: 1.8; margin-bottom: 1rem;
+    }
+    .about-text strong { color: #FFEFC0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0D0500;
+      color: rgba(255,239,192,0.45);
+      padding: 3rem 5vw 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand .nav-logo { color: var(--snow); font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.82rem; margin-top: 0.8rem; line-height: 1.7; max-width: 300px; color: rgba(255,239,192,0.45); }
+    .footer-col h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--gold); text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul a {
+      color: rgba(255,239,192,0.45);
+      text-decoration: none; font-size: 0.84rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: #FFD166; }
+    .footer-bottom {
+      max-width: 1100px; margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(245,166,35,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem;
+      font-size: 0.78rem;
+    }
+    .footer-bottom a { color: rgba(255,239,192,0.4); text-decoration: none; }
+    .footer-bottom a:hover { color: #FFD166; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      width: 48px; height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 1rem auto 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .grc-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .reg-item { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Falling snow effect -->
+  <div class="snow-layer" id="snowLayer"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="#" class="nav-logo">De<span>Compliance</span></a>
+    <ul class="nav-links">
+      <li><a href="#what-is-grc">What is AI GRC</a></li>
+      <li><a href="#regulatory">Regulatory</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#frameworks">Frameworks</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#subscribe" class="nav-cta">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <span class="hero-eyebrow">decompliance.uk · Est. 2024</span>
+    <h1>Navigating <em>AI Governance</em>, Risk & Compliance</h1>
+    <p class="hero-sub">
+      The regulatory landscape for AI is shifting rapidly. DeCompliance delivers curated intelligence on AI GRC — what's changing, what matters, and what you need to act on.
+    </p>
+    <div class="hero-actions">
+      <a href="#subscribe" class="btn-primary">Get the Newsletter</a>
+      <a href="#what-is-grc" class="btn-outline">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">AI Regulations Tracked</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Major Jurisdictions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Weekly</div>
+        <div class="stat-label">Newsletter Cadence</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">GRC Focused</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT IS AI GRC ── -->
+  <section class="what-grc" id="what-is-grc">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Foundation</div>
+        <h2 class="section-title">What is AI GRC?</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          AI GRC is the discipline of managing artificial intelligence through structured governance, rigorous risk management, and regulatory compliance — ensuring AI systems are trustworthy, ethical, and lawful.
+        </p>
+      </div>
+      <div class="grc-grid">
+        <div class="grc-pillar">
+          <div class="pillar-letter">G</div>
+          <div class="pillar-name">Governance</div>
+          <p class="pillar-desc">
+            Policies, roles, accountability structures, and oversight mechanisms that guide how AI is designed, deployed, and monitored within an organisation. Covers board-level AI strategy, model inventories, and internal audit trails.
+          </p>
+        </div>
+        <div class="grc-pillar">
+          <div class="pillar-letter">R</div>
+          <div class="pillar-name">Risk</div>
+          <p class="pillar-desc">
+            Identification, assessment, and mitigation of harms that AI may cause — including bias, hallucination, data poisoning, model drift, and third-party supply chain risks. Aligns with ISO 31000 and emerging AI-specific risk taxonomies.
+          </p>
+        </div>
+        <div class="grc-pillar">
+          <div class="pillar-letter">C</div>
+          <div class="pillar-name">Compliance</div>
+          <p class="pillar-desc">
+            Meeting the letter and spirit of regulations such as the EU AI Act, UK's pro-innovation AI approach, NIST AI RMF, and sector-specific mandates from financial regulators like the FCA and PRA.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY IT MATTERS ── -->
+  <section class="why-matters">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">The Stakes</div>
+        <h2 class="section-title">Why AI GRC Matters Now</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          Regulatory action is no longer theoretical. Organisations that ignore AI governance today face real consequences tomorrow.
+        </p>
+      </div>
+      <div class="matters-cards">
+        <div class="matter-card">
+          <div class="matter-icon">⚖️</div>
+          <h3>Regulatory Enforcement is Live</h3>
+          <p>The EU AI Act began phased enforcement in 2024, with prohibited AI systems already banned. Fines reach €35M or 7% of global turnover — whichever is higher.</p>
+        </div>
+        <div class="matter-card">
+          <div class="matter-icon">🏦</div>
+          <h3>Financial Sector Scrutiny</h3>
+          <p>UK FCA and PRA have issued supervisory guidance on AI model risk. Banks and insurers face SR 11-7 equivalent expectations for algorithmic decision-making systems.</p>
+        </div>
+        <div class="matter-card">
+          <div class="matter-icon">🔐</div>
+          <h3>Data & Privacy Intersection</h3>
+          <p>Training data, GDPR compliance, and automated decision-making rights under Article 22 create a legal web that AI teams must navigate with legal and compliance partners.</p>
+        </div>
+        <div class="matter-card">
+          <div class="matter-icon">🌍</div>
+          <h3>Global Fragmentation</h3>
+          <p>The US, EU, UK, China, and Singapore each have diverging AI regulatory philosophies. Multinationals need a GRC strategy that works across multiple legal systems simultaneously.</p>
+        </div>
+        <div class="matter-card">
+          <div class="matter-icon">📋</div>
+          <h3>Board-Level Accountability</h3>
+          <p>Directors are personally accountable for AI-related material risks. Governance frameworks must flow from the board down to engineering and procurement teams.</p>
+        </div>
+        <div class="matter-card">
+          <div class="matter-icon">🤝</div>
+          <h3>Third-Party AI Risk</h3>
+          <p>Vendor AI models embedded in products inherit regulatory obligations. Organisations must assess, monitor, and document AI in their supply chains as rigorously as internally built systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REGULATORY LANDSCAPE ── -->
+  <section class="regulatory" id="regulatory">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Regulatory Watch</div>
+        <h2 class="section-title">Global AI Regulatory Landscape</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          A fast-moving map of the laws, frameworks, and enforcement actions shaping AI compliance obligations worldwide.
+        </p>
+      </div>
+      <div class="reg-timeline">
+
+        <div class="reg-item">
+          <div class="reg-date">EU · 2024–26</div>
+          <div class="reg-content">
+            <h3>EU Artificial Intelligence Act</h3>
+            <p>The world's first comprehensive AI law. Uses a risk-tiered approach — prohibited, high-risk, limited-risk, and minimal-risk AI. High-risk systems (recruitment, credit, healthcare) face conformity assessments, technical documentation, and post-market monitoring. General-purpose AI models above 10^25 FLOPs face additional systemic risk obligations.</p>
+            <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">Read the EU AI Act →</a>
+          </div>
+        </div>
+
+        <div class="reg-item">
+          <div class="reg-date">UK · 2023+</div>
+          <div class="reg-content">
+            <h3>UK Pro-Innovation AI Approach</h3>
+            <p>The UK government has opted for a principles-based, sector-led model rather than prescriptive AI legislation. The ICO, FCA, CMA, and Ofcom each apply existing powers to AI in their domains. The AI Safety Institute runs frontier model evaluations and publishes safety reports.</p>
+            <a href="https://www.gov.uk/government/publications/ai-regulation-a-pro-innovation-approach" target="_blank" rel="noopener">UK AI Policy Paper →</a>
+          </div>
+        </div>
+
+        <div class="reg-item">
+          <div class="reg-date">US · 2023+</div>
+          <div class="reg-content">
+            <h3>US Executive Order on AI & NIST AI RMF</h3>
+            <p>The Biden-era Executive Order on Safe, Secure, and Trustworthy AI directed agencies to develop sector-specific guidance. The NIST AI Risk Management Framework (AI RMF 1.0) provides a voluntary but widely adopted GRC structure for US organisations, covering Govern, Map, Measure, and Manage functions.</p>
+            <a href="https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF →</a>
+          </div>
+        </div>
+
+        <div class="reg-item">
+          <div class="reg-date">Global · 2023</div>
+          <div class="reg-content">
+            <h3>ISO/IEC 42001 — AI Management Systems</h3>
+            <p>The international standard for establishing, implementing, and maintaining an AI Management System (AIMS). Certifiable and modelled on ISO 27001. Provides the structural backbone for many organisations' AI GRC programmes, particularly in Europe and Asia-Pacific.</p>
+            <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">ISO/IEC 42001 Overview →</a>
+          </div>
+        </div>
+
+        <div class="reg-item">
+          <div class="reg-date">SG · 2023+</div>
+          <div class="reg-content">
+            <h3>Singapore Model AI Governance Framework</h3>
+            <p>MAS and IMDA have co-developed one of the world's most detailed voluntary AI governance frameworks for financial services and general use. Singapore's approach is widely respected as a model for balanced, innovation-friendly AI oversight.</p>
+            <a href="https://www.pdpc.gov.sg/help-and-resources/2020/01/model-ai-governance-framework" target="_blank" rel="noopener">Singapore AI Framework →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LATEST INSIGHTS ── -->
+  <section class="insights" id="insights">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Editorial</div>
+        <h2 class="section-title">Latest AI GRC Insights</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          Analysis, commentary, and intelligence on the key developments shaping AI governance.
+        </p>
+      </div>
+      <div class="insights-grid">
+
+        <div class="insight-card">
+          <div class="insight-tag-bar">
+            <span class="tag">EU AI Act</span>
+            <span class="tag">High-Risk</span>
+          </div>
+          <div class="insight-body">
+            <h3>GPAI Model Obligations: What Providers Must Prepare For</h3>
+            <p>General-purpose AI providers face technical documentation, copyright transparency, and systemic risk evaluation duties. Here's a practical breakdown of what compliance looks like in practice.</p>
+            <div class="insight-meta">
+              <span>June 2025</span>
+              <a href="https://artificialintelligenceact.eu/the-act/" target="_blank" rel="noopener" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag-bar">
+            <span class="tag">NIST AI RMF</span>
+            <span class="tag">Governance</span>
+          </div>
+          <div class="insight-body">
+            <h3>How to Build an AI Risk Register That Auditors Will Accept</h3>
+            <p>A practical template for AI risk registers aligned with NIST AI RMF, covering inherent risk, controls, residual risk, and owner accountability — built to satisfy both internal audit and external regulators.</p>
+            <div class="insight-meta">
+              <span>May 2025</span>
+              <a href="https://airc.nist.gov/Docs/1" target="_blank" rel="noopener" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag-bar">
+            <span class="tag">ISO 42001</span>
+            <span class="tag">Certification</span>
+          </div>
+          <div class="insight-body">
+            <h3>ISO/IEC 42001 Certification: Is It Worth Pursuing in 2025?</h3>
+            <p>As the EU AI Act references ISO standards, organisations are considering whether ISO 42001 certification provides meaningful market differentiation or regulatory credit — and whether the audit costs are justified.</p>
+            <div class="insight-meta">
+              <span>April 2025</span>
+              <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag-bar">
+            <span class="tag">UK Regulation</span>
+            <span class="tag">FCA</span>
+          </div>
+          <div class="insight-body">
+            <h3>FCA's AI Strategy: What Financial Firms Need to Know</h3>
+            <p>The FCA has signalled heightened focus on AI model explainability, consumer duty obligations for algorithmic decisions, and third-party AI vendor due diligence in regulated financial services.</p>
+            <div class="insight-meta">
+              <span>March 2025</span>
+              <a href="https://www.fca.org.uk/publications/discussion-papers/dp24-4-ai-financial-services" target="_blank" rel="noopener" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag-bar">
+            <span class="tag">Ethics</span>
+            <span class="tag">Fairness</span>
+          </div>
+          <div class="insight-body">
+            <h3>Bias Testing: Moving from Aspiration to Audit-Ready Practice</h3>
+            <p>Regulators increasingly expect documented bias assessments for AI systems affecting individuals. We examine what a credible bias testing programme looks like — from dataset audits to disparate impact analysis.</p>
+            <div class="insight-meta">
+              <span>February 2025</span>
+              <a href="https://www.gov.uk/guidance/understanding-artificial-intelligence-ethics-and-safety" target="_blank" rel="noopener" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag-bar">
+            <span class="tag">AI Safety</span>
+            <span class="tag">Frontier AI</span>
+          </div>
+          <div class="insight-body">
+            <h3>Frontier AI Safety: From Bletchley to Brussels</h3>
+            <p>The international AI safety dialogue — from the Bletchley Declaration to Seoul commitments — is starting to shape binding obligations. What do safety evaluations mean for enterprise AI GRC programmes?</p>
+            <div class="insight-meta">
+              <span>January 2025</span>
+              <a href="https://www.gov.uk/government/publications/bletchley-declaration" target="_blank" rel="noopener" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KEY FRAMEWORKS ── -->
+  <section class="frameworks" id="frameworks">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Frameworks & Standards</div>
+        <h2 class="section-title">Key AI GRC Frameworks</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          The standards, frameworks, and reference documents that form the backbone of a mature AI governance programme.
+        </p>
+      </div>
+      <div class="framework-cards">
+        <div class="fw-card">
+          <span class="fw-badge">NIST</span>
+          <h3>AI Risk Management Framework</h3>
+          <p>Voluntary US framework with Govern, Map, Measure, and Manage functions. Widely adopted globally as a structured AI GRC baseline.</p>
+          <a href="https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov →</a>
+        </div>
+        <div class="fw-card">
+          <span class="fw-badge">ISO/IEC</span>
+          <h3>ISO/IEC 42001:2023</h3>
+          <p>International standard for AI Management Systems. Certifiable. Covers AI policy, risk assessment, and continuous improvement obligations.</p>
+          <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">iso.org →</a>
+        </div>
+        <div class="fw-card">
+          <span class="fw-badge">EU</span>
+          <h3>EU AI Act</h3>
+          <p>World's first comprehensive AI regulation. Risk-tiered obligations. Mandatory for organisations deploying AI in the European market.</p>
+          <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">artificialintelligenceact.eu →</a>
+        </div>
+        <div class="fw-card">
+          <span class="fw-badge">OECD</span>
+          <h3>OECD AI Principles</h3>
+          <p>Five principles (inclusive growth, human-centred values, transparency, robustness, accountability) forming the philosophical baseline for many national AI policies.</p>
+          <a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">oecd.ai →</a>
+        </div>
+        <div class="fw-card">
+          <span class="fw-badge">IEEE</span>
+          <h3>IEEE 7000-Series</h3>
+          <p>Technical standards for ethically aligned AI design, including IEEE 7001 (transparency) and IEEE 7010 (wellbeing metrics). Increasingly referenced in procurement.</p>
+          <a href="https://standards.ieee.org/industry-connections/ec/autonomous-systems/" target="_blank" rel="noopener">standards.ieee.org →</a>
+        </div>
+        <div class="fw-card">
+          <span class="fw-badge">UK</span>
+          <h3>UK AI Safety Institute</h3>
+          <p>Conducts frontier model evaluations, publishes safety reports, and develops sector-specific AI governance toolkits in collaboration with global counterparts.</p>
+          <a href="https://www.gov.uk/government/organisations/ai-safety-institute" target="_blank" rel="noopener">gov.uk/aisi →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOPICS WE COVER ── -->
+  <section class="topics">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Coverage</div>
+        <h2 class="section-title">Topics We Cover</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          Every issue of the DeCompliance newsletter is structured to give you strategic and operational intelligence across the full AI GRC spectrum.
+        </p>
+      </div>
+      <div class="topics-list">
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Regulatory Developments</strong><span>EU AI Act updates, UK ICO guidance, US sector-specific rulemaking</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>AI Risk Management</strong><span>Model risk, third-party AI risk, bias and fairness testing</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Governance Frameworks</strong><span>AI policies, board oversight, accountability structures</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>AI Auditing & Assurance</strong><span>Internal audit approaches, third-party assessments, conformity</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Data Governance for AI</strong><span>GDPR, data lineage, training data rights, Article 22</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Ethical AI Design</strong><span>Responsible AI principles, human oversight, explainability</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Sector Deep-Dives</strong><span>Financial services, healthcare, HR, public sector AI compliance</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>AI Safety Research</strong><span>Frontier model evaluations, red-teaming, safety benchmarks</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Enforcement & Litigation</strong><span>Regulatory investigations, enforcement actions, case studies</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Global Regulatory Comparison</strong><span>EU vs UK vs US vs APAC regulatory philosophy differences</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Procurement & Vendor Risk</strong><span>AI due diligence, contract clauses, SLAs for AI providers</span></div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-dot"></div>
+          <div class="topic-text"><strong>Tooling & Technology</strong><span>GRC platforms, AI observability, model monitoring solutions</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER SUBSCRIBE ── -->
+  <section class="newsletter" id="subscribe">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Stay Informed</div>
+        <h2 class="section-title">Subscribe to the Newsletter</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:1rem;">
+          Join compliance professionals, risk managers, legal counsel, and AI practitioners who read DeCompliance every week to stay ahead of the curve.
+        </p>
+      </div>
+
+      <div class="subscribe-box">
+        <div id="subscribeForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name"/>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name"/>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label for="emailInput">Email Address</label>
+            <input type="email" id="emailInput" placeholder="jane@yourorganisation.com" autocomplete="email"/>
+          </div>
+          <button class="subscribe-btn" onclick="handleSubscribe()">Join the DeCompliance Community →</button>
+          <p class="subscribe-note">No spam. Unsubscribe anytime. Weekly AI GRC intelligence only.</p>
+        </div>
+        <div class="subscribe-success" id="subscribeSuccess">
+          <h3>You're on the list! ✦</h3>
+          <p>Welcome to DeCompliance. Your first issue will arrive next week. Look out for it in your inbox — or check your spam folder just in case.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="founder-card">
+          <div class="founder-avatar">DK</div>
+          <div class="founder-name">Darshan Krishnappa</div>
+          <div style="font-size:0.82rem; color:var(--muted); margin-top:0.3rem;">Founder, DeCompliance</div>
+          <div class="founder-tags">
+            <span class="founder-tag">AI</span>
+            <span class="founder-tag">GRC</span>
+            <span class="founder-tag">decompliance.uk</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2>Intelligence at the intersection of AI, Governance & Compliance</h2>
+          <p>
+            <strong>DeCompliance</strong> was founded with a single conviction: that the organisations that understand AI governance now will be the ones that thrive as regulation matures. Too much AI compliance content is either theoretical or too technical for practitioners who need to act.
+          </p>
+          <p>
+            DeCompliance exists to bridge that gap — delivering clear, actionable intelligence on the regulatory frameworks, risk practices, and governance structures that matter to professionals working at the intersection of <strong>AI and compliance</strong>.
+          </p>
+          <p>
+            Whether you're a Chief Risk Officer, a DPO, a legal counsel, or an AI engineer trying to understand your regulatory obligations — this newsletter is built for you.
+          </p>
+          <p style="font-style:italic; color:var(--muted);">
+            "Complexity is not an excuse for inaction. Good governance demystifies it."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">De<span style="color:#F5A623">Compliance</span></a>
+        <p>AI Governance, Risk & Compliance intelligence for practitioners navigating the future of regulated AI. Published from the UK.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#what-is-grc">What is AI GRC</a></li>
+          <li><a href="#regulatory">Regulatory Landscape</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#frameworks">Frameworks</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Key Resources</h4>
+        <ul>
+          <li><a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">EU AI Act</a></li>
+          <li><a href="https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a></li>
+          <li><a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">ISO/IEC 42001</a></li>
+          <li><a href="https://www.gov.uk/government/organisations/ai-safety-institute" target="_blank" rel="noopener">UK AI Safety Institute</a></li>
+          <li><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">OECD AI Principles</a></li>
+          <li><a href="#subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 DeCompliance · <strong>decompliance.uk</strong> · Founder: Darshan Krishnappa | AI | GRC</span>
+      <span>
+        <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="#">Terms of Use</a> &nbsp;·&nbsp;
+        <a href="#subscribe">Newsletter</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // ── Snowflake generator ──
+    const snowLayer = document.getElementById('snowLayer');
+    const chars = ['❄', '✦', '·', '◆', '✧'];
+    for (let i = 0; i < 28; i++) {
+      const flake = document.createElement('span');
+      flake.className = 'flake';
+      flake.textContent = chars[Math.floor(Math.random() * chars.length)];
+      const left = Math.random() * 100;
+      const duration = 12 + Math.random() * 18;
+      const delay = Math.random() * -20;
+      const size = 0.6 + Math.random() * 0.8;
+      flake.style.cssText = `left:${left}%;font-size:${size}rem;animation-duration:${duration}s;animation-delay:${delay}s;opacity:${0.1 + Math.random()*0.2}`;
+      snowLayer.appendChild(flake);
+    }
+
+    // ── Subscribe form ──
+    function handleSubscribe() {
+      const first = document.getElementById('firstName').value.trim();
+      const last = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      if (!first || !email) {
+        alert('Please enter your first name and email address.');
+        return;
+      }
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      document.getElementById('subscribeForm').style.display = 'none';
+      document.getElementById('subscribeSuccess').style.display = 'block';
+    }
+
+    // ── Smooth scroll for nav links ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+</html>
