@@ -764,6 +764,100 @@
     .modal-body ul li { margin-bottom: 0.35rem; }
     .modal-body strong { color: var(--ink); }
 
+    /* ── NEWSLETTER ARCHIVE ── */
+    .nl-archive { padding: 4rem 0; background: var(--bg-section); }
+    .nl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+    .nl-card {
+      background: var(--bg-card); border: 1px solid var(--teal-border-l);
+      border-radius: 10px; padding: 1.4rem;
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+      cursor: pointer; position: relative; overflow: hidden;
+    }
+    .nl-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--teal); transform: scaleX(0); transition: transform 0.25s;
+    }
+    .nl-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,212,200,0.1); }
+    .nl-card:hover::before { transform: scaleX(1); }
+    .nl-card.featured { border-color: var(--teal-border); background: rgba(0,212,200,0.04); grid-column: span 2; }
+    .nl-issue-label { font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--teal); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem; }
+    .nl-card-tag { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.62rem; background:var(--teal-dim); color:var(--teal); border:1px solid var(--teal-border); padding:0.15rem 0.5rem; border-radius:3px; margin-bottom:0.5rem; letter-spacing:0.06em; text-transform:uppercase; }
+    .nl-card h3 { font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--ink); line-height:1.35; margin-bottom:0.5rem; }
+    .nl-card p { font-size:0.82rem; color:var(--ink-soft); line-height:1.65; margin-bottom:0.8rem; }
+    .nl-card-footer { display:flex; align-items:center; justify-content:space-between; }
+    .nl-date { font-size:0.75rem; color:var(--ink-muted); font-family:'JetBrains Mono',monospace; }
+    .nl-read-btn { font-size:0.78rem; color:var(--teal); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:0.3rem; transition:gap 0.2s; }
+    .nl-card:hover .nl-read-btn { gap:0.6rem; }
+
+    /* ── FLASHCARD SECTIONS ── */
+    .fc-section { padding: 4rem 0; }
+    .fc-section.alt { background: var(--bg-card); }
+    .fc-section.dark { background: var(--bg-alt); }
+    .fc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+    .flashcard {
+      background: var(--bg-base); border: 1px solid var(--teal-border-l);
+      border-radius: 10px; padding: 1.4rem;
+      transition: all 0.25s; cursor: pointer;
+      animation: fcPulse 5s ease-in-out infinite;
+    }
+    .flashcard:nth-child(2) { animation-delay:0.8s; }
+    .flashcard:nth-child(3) { animation-delay:1.6s; }
+    .flashcard:nth-child(4) { animation-delay:2.4s; }
+    .flashcard:nth-child(5) { animation-delay:3.2s; }
+    .flashcard:nth-child(6) { animation-delay:4s; }
+    @keyframes fcPulse {
+      0%,100% { border-color:var(--teal-border-l); }
+      50% { border-color:rgba(0,212,200,0.35); box-shadow:0 0 16px rgba(0,212,200,0.07); }
+    }
+    .flashcard:hover { border-color:var(--teal); background:rgba(0,212,200,0.04); transform:translateY(-3px); animation:none; box-shadow:0 6px 24px rgba(0,212,200,0.1); }
+    .fc-icon { width:38px; height:38px; background:var(--teal-dim); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; margin-bottom:0.9rem; }
+    .fc-date { font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--teal); letter-spacing:0.08em; margin-bottom:0.4rem; text-transform:uppercase; }
+    .fc-severity { display:inline-block; font-size:0.62rem; font-weight:600; padding:0.15rem 0.5rem; border-radius:3px; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.06em; }
+    .sev-critical { background:rgba(239,68,68,0.15); color:#f87171; border:1px solid rgba(239,68,68,0.25); }
+    .sev-high { background:rgba(251,146,60,0.15); color:#fb923c; border:1px solid rgba(251,146,60,0.25); }
+    .sev-medium { background:rgba(250,204,21,0.12); color:#fbbf24; border:1px solid rgba(250,204,21,0.2); }
+    .flashcard h3 { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:600; color:var(--ink); line-height:1.35; margin-bottom:0.5rem; }
+    .flashcard p { font-size:0.81rem; color:var(--ink-soft); line-height:1.65; margin-bottom:0.8rem; }
+    .fc-source { font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--ink-muted); display:flex; align-items:center; gap:0.35rem; }
+    .fc-source a { color:var(--teal); text-decoration:none; }
+    .fc-source a:hover { text-decoration:underline; }
+    .fc-tags { display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:0.7rem; }
+    .fc-tag { font-family:'JetBrains Mono',monospace; font-size:0.6rem; background:var(--teal-dim); color:var(--teal); border:1px solid var(--teal-border); padding:0.15rem 0.45rem; border-radius:3px; text-transform:uppercase; letter-spacing:0.05em; }
+    .risk-tag { background:rgba(239,68,68,0.1); color:#f87171; border-color:rgba(239,68,68,0.2); }
+    .warn-tag { background:rgba(251,146,60,0.1); color:#fb923c; border-color:rgba(251,146,60,0.2); }
+
+    /* ── SUBPAGE MODAL ── */
+    .sp-modal {
+      display: none; position: fixed; inset: 0; z-index: 998;
+      background: rgba(5,8,16,0.92); backdrop-filter: blur(8px);
+      padding: 2rem 1rem; overflow-y: auto;
+    }
+    .sp-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+    .sp-box {
+      background: var(--bg-card); border: 1px solid var(--teal-border);
+      border-radius: 14px; width: 100%; max-width: 760px;
+      margin: auto; box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+      animation: modalIn 0.25s ease;
+    }
+    .sp-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 1.6rem 2rem 1.2rem;
+      border-bottom: 1px solid var(--teal-border-l);
+      background: var(--bg-card); border-radius: 14px 14px 0 0;
+      gap: 1rem;
+    }
+    .sp-issue { font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--teal); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem; }
+    .sp-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--ink); line-height:1.25; }
+    .sp-close { background:var(--teal-dim); border:1px solid var(--teal-border); color:var(--teal); font-size:1.2rem; width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.2s; }
+    .sp-close:hover { background:rgba(0,212,200,0.25); }
+    .sp-body { padding: 1.8rem 2rem 2.5rem; font-size:0.9rem; color:var(--ink-soft); line-height:1.85; }
+    .sp-body h3 { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:600; color:var(--ink); margin:1.4rem 0 0.5rem; }
+    .sp-body h3:first-child { margin-top:0; }
+    .sp-body p { margin-bottom:0.9rem; }
+    .sp-body strong { color:var(--ink); }
+    .sp-body .callout { background:var(--teal-dim); border-left:3px solid var(--teal); border-radius:0 6px 6px 0; padding:0.9rem 1.1rem; margin:1rem 0; font-size:0.85rem; }
+    .sp-meta { font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--teal); margin-bottom:1.2rem; letter-spacing:0.06em; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -774,6 +868,7 @@
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .reg-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .nl-card.featured { grid-column: span 1; }
     }
   </style>
 </head>
@@ -813,10 +908,12 @@
       <span class="nav-tagline">Decoding Compliance, Risk &amp; Regulation</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#what-is-grc">What is AI GRC</a></li>
+      <li><a href="#what-is-grc">AI GRC</a></li>
       <li><a href="#regulatory">Regulatory</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#frameworks">Frameworks</a></li>
+      <li><a href="#archive">Newsletter</a></li>
+      <li><a href="#ai-attacks">Threat Intel</a></li>
+      <li><a href="#ai-data-risk">Data Risk</a></li>
+      <li><a href="#autonomous-ai">AI Agents</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#subscribe" class="nav-cta">Subscribe</a></li>
     </ul>
@@ -1131,6 +1228,440 @@
     </div>
   </section>
 
+  <!-- ── WEEKLY NEWSLETTERS ── -->
+  <section class="nl-archive" id="archive">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">◆ Weekly Intelligence</div>
+        <h2 class="section-title">Weekly Newsletters</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:0.8rem;">Published every Monday — AI GRC intelligence for practitioners navigating the future of regulated AI.</p>
+      </div>
+      <!-- Two-column: left = current + past, right = upcoming panel -->
+      <div style="display:grid; grid-template-columns:1fr 300px; gap:2rem; margin-top:2.5rem; align-items:start;">
+
+        <!-- Left: current & recent newsletters -->
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <!-- Latest -->
+          <div class="nl-card featured" onclick="openSP('sp-issue1')" style="cursor:pointer;">
+            <div class="nl-issue-label">◆ Latest · 28 June 2026</div>
+            <span class="nl-card-tag">EU AI Act</span>
+            <h3>The EU AI Act Clock is Ticking: August 2026 Deadline Explained</h3>
+            <p>Article 50 transparency obligations go live August 2026. Digital Omnibus pushes high-risk deadlines to December 2027 — but chatbot disclosure is non-negotiable right now.</p>
+            <div class="nl-card-footer">
+              <span class="nl-date">28 June 2026</span>
+              <span class="nl-read-btn">Read full article →</span>
+            </div>
+          </div>
+          <!-- Teaser row for more coming -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="nl-card" style="opacity:0.6; cursor:default;">
+              <div class="nl-issue-label" style="color:var(--ink-muted);">Coming · 7 Jul 2026</div>
+              <span class="nl-card-tag">NIST AI RMF</span>
+              <h3 style="font-size:0.9rem;">NIST AI RMF 2.0: What Organisations Must Do Now</h3>
+              <div class="nl-card-footer" style="margin-top:0.8rem;">
+                <span class="nl-date">7 July 2026</span>
+                <span style="font-size:0.75rem; color:var(--ink-muted);">Not published yet</span>
+              </div>
+            </div>
+            <div class="nl-card" style="opacity:0.6; cursor:default;">
+              <div class="nl-issue-label" style="color:var(--ink-muted);">Coming · 14 Jul 2026</div>
+              <span class="nl-card-tag">ISO 42001</span>
+              <h3 style="font-size:0.9rem;">ISO/IEC 42001 Certification: Is It Worth Pursuing?</h3>
+              <div class="nl-card-footer" style="margin-top:0.8rem;">
+                <span class="nl-date">14 July 2026</span>
+                <span style="font-size:0.75rem; color:var(--ink-muted);">Not published yet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: upcoming panel -->
+        <div style="background:var(--bg-card); border:1px solid var(--teal-border); border-radius:12px; padding:1.4rem; position:sticky; top:110px;">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; padding-bottom:0.8rem; border-bottom:1px solid var(--teal-border-l);">
+            <div style="width:7px; height:7px; background:var(--teal); border-radius:50%; flex-shrink:0;"></div>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--teal); letter-spacing:0.12em; text-transform:uppercase; font-weight:500;">Coming up next</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <div style="padding:0.9rem 0; border-bottom:1px solid rgba(240,244,255,0.06);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.35rem;">Mon · 7 Jul 2026</div>
+              <span style="display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.6rem; background:var(--teal-dim); color:var(--teal); border:1px solid var(--teal-border); padding:0.12rem 0.45rem; border-radius:3px; margin-bottom:0.4rem; letter-spacing:0.05em; text-transform:uppercase;">NIST AI RMF</span>
+              <div style="font-family:'Playfair Display',serif; font-size:0.88rem; font-weight:600; color:var(--ink); line-height:1.35; margin-bottom:0.35rem;">NIST AI RMF 2.0: What organisations must do now</div>
+              <div style="font-size:0.78rem; color:var(--ink-muted); line-height:1.55;">Updated Govern function, new implementation guidance, and how it maps to EU AI Act compliance.</div>
+            </div>
+
+            <div style="padding:0.9rem 0; border-bottom:1px solid rgba(240,244,255,0.06);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.35rem;">Mon · 14 Jul 2026</div>
+              <span style="display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.6rem; background:var(--teal-dim); color:var(--teal); border:1px solid var(--teal-border); padding:0.12rem 0.45rem; border-radius:3px; margin-bottom:0.4rem; letter-spacing:0.05em; text-transform:uppercase;">ISO 42001</span>
+              <div style="font-family:'Playfair Display',serif; font-size:0.88rem; font-weight:600; color:var(--ink); line-height:1.35; margin-bottom:0.35rem;">ISO/IEC 42001 certification — is it worth pursuing?</div>
+              <div style="font-size:0.78rem; color:var(--ink-muted); line-height:1.55;">Cost vs regulatory credit, and what auditors expect to see in 2026.</div>
+            </div>
+
+            <div style="padding:0.9rem 0; border-bottom:1px solid rgba(240,244,255,0.06);">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.35rem;">Mon · 21 Jul 2026</div>
+              <span style="display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.6rem; background:var(--teal-dim); color:var(--teal); border:1px solid var(--teal-border); padding:0.12rem 0.45rem; border-radius:3px; margin-bottom:0.4rem; letter-spacing:0.05em; text-transform:uppercase;">UK FCA</span>
+              <div style="font-family:'Playfair Display',serif; font-size:0.88rem; font-weight:600; color:var(--ink); line-height:1.35; margin-bottom:0.35rem;">FCA AI strategy: what financial firms need to know</div>
+              <div style="font-size:0.78rem; color:var(--ink-muted); line-height:1.55;">AI model explainability, consumer duty, and third-party vendor scrutiny.</div>
+            </div>
+
+            <div style="padding:0.9rem 0 0;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.35rem;">Mon · 28 Jul 2026</div>
+              <span style="display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.6rem; background:var(--teal-dim); color:var(--teal); border:1px solid var(--teal-border); padding:0.12rem 0.45rem; border-radius:3px; margin-bottom:0.4rem; letter-spacing:0.05em; text-transform:uppercase;">AI Agents</span>
+              <div style="font-family:'Playfair Display',serif; font-size:0.88rem; font-weight:600; color:var(--ink); line-height:1.35; margin-bottom:0.35rem;">Autonomous AI agents — governance failing at scale</div>
+              <div style="font-size:0.78rem; color:var(--ink-muted); line-height:1.55;">No approval gates, no audit trails, no liability framework — what boards must act on now.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--teal-border-l);">
+            <a href="#subscribe" style="display:block; background:var(--teal); color:var(--bg-base); text-align:center; padding:0.65rem; border-radius:6px; font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; transition:opacity 0.2s;">Subscribe to get these →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION: AI ATTACKS ── -->
+  <section class="fc-section" id="ai-attacks">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Threat Intelligence</div>
+        <h2 class="section-title">AI-Driven Attacks &amp; Data Breaches</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:0.8rem;">Real incidents from the past 12 months where AI was weaponised or AI systems failed — with root causes and impact.</p>
+      </div>
+
+      <!-- One big box -->
+      <div style="margin-top:2.5rem; background:var(--bg-card); border:1px solid var(--teal-border); border-radius:14px; overflow:hidden;">
+
+        <!-- Cards grid inside box -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(0,212,200,0.08);">
+
+          <div class="flashcard" onclick="openSP('sp-attack5')" style="border-radius:0; border:none; animation:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.6rem;"><div class="fc-icon" style="margin:0;">🏦</div><div class="fc-date">Jan 2025</div></div>
+              <span class="fc-severity sev-critical">Critical</span>
+            </div>
+            <div class="fc-tags"><span class="fc-tag">Finance</span><span class="fc-tag risk-tag">Voice Clone</span></div>
+            <h3>UK Finance — AI Voice Clone CEO Fraud, £1.2M Lost</h3>
+            <p>Criminals used AI voice cloning to impersonate a UK CEO, authorising an emergency wire transfer of £1.2M. The bank had no AI-generated voice detection in its fraud controls.</p>
+            <div class="fc-source">Source: <a href="https://www.wsj.com/articles/fraudsters-use-ai-to-mimic-ceos-voice-in-unusual-cybercrime-case-11567157402" target="_blank" rel="noopener">Wall Street Journal →</a></div>
+          </div>
+
+          <div class="flashcard" onclick="openSP('sp-attack6')" style="border-radius:0; border:none; animation:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.6rem;"><div class="fc-icon" style="margin:0;">🔓</div><div class="fc-date">Mar 2025</div></div>
+              <span class="fc-severity sev-critical">Critical</span>
+            </div>
+            <div class="fc-tags"><span class="fc-tag">Prompt Injection</span><span class="fc-tag risk-tag">Data Leak</span></div>
+            <h3>AI Copilot Prompt Injection — Corporate Data Exfiltrated</h3>
+            <p>Attackers embedded hidden instructions in documents fed to enterprise AI copilots, causing silent exfiltration of sensitive corporate data. No prompt injection controls were in place.</p>
+            <div class="fc-source">Source: <a href="https://embracethered.com/blog/posts/2023/bing-chat-data-exfiltration-poc-and-fix/" target="_blank" rel="noopener">Embrace the Red →</a></div>
+          </div>
+
+          <div class="flashcard" onclick="openSP('sp-attack-nhs')" style="border-radius:0; border:none; animation:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.6rem;"><div class="fc-icon" style="margin:0;">🏥</div><div class="fc-date">Apr 2025</div></div>
+              <span class="fc-severity sev-critical">Critical</span>
+            </div>
+            <div class="fc-tags"><span class="fc-tag">Healthcare</span><span class="fc-tag risk-tag">PII Leak</span></div>
+            <h3>NHS AI Chatbot Leaks Patient PII to Third Parties</h3>
+            <p>An NHS-integrated AI triage chatbot transmitted patient symptom data and demographics to external analytics providers without patient consent or DSPT compliance.</p>
+            <div class="fc-source">Source: <a href="https://ico.org.uk/action-weve-taken/" target="_blank" rel="noopener">ICO Investigation, Apr 2025 →</a></div>
+          </div>
+
+          <div class="flashcard" onclick="openSP('sp-attack-law')" style="border-radius:0; border:none; animation:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.6rem;"><div class="fc-icon" style="margin:0;">💼</div><div class="fc-date">May 2025</div></div>
+              <span class="fc-severity sev-high">High</span>
+            </div>
+            <div class="fc-tags"><span class="fc-tag">Shadow AI</span><span class="fc-tag warn-tag">Legal</span></div>
+            <h3>UK Law Firm — Staff Upload Client Files to Unauthorised AI</h3>
+            <p>Lawyers used personal ChatGPT accounts to draft client documents, uploading confidential legal instructions and privileged communications to OpenAI infrastructure without authorisation.</p>
+            <div class="fc-source">Source: <a href="https://legalitinsider.co.uk/" target="_blank" rel="noopener">Legal IT Insider, May 2025 →</a></div>
+          </div>
+
+          <div class="flashcard" onclick="openSP('sp-attack-trading')" style="border-radius:0; border:none; animation:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.6rem;"><div class="fc-icon" style="margin:0;">📈</div><div class="fc-date">Aug 2025</div></div>
+              <span class="fc-severity sev-critical">Critical</span>
+            </div>
+            <div class="fc-tags"><span class="fc-tag">AI Agent</span><span class="fc-tag risk-tag">Finance</span></div>
+            <h3>Autonomous AI Trading Agent Triggers £4M Erroneous Trades</h3>
+            <p>An autonomous AI agent deployed without adequate kill-switch controls executed erroneous trades after misinterpreting a regulatory announcement, causing £4M in losses before human intervention.</p>
+            <div class="fc-source">Source: <a href="https://www.fca.org.uk/publications" target="_blank" rel="noopener">FCA Supervisory Notice, Aug 2025 →</a></div>
+          </div>
+
+          <div class="flashcard" onclick="openSP('sp-attack-model')" style="border-radius:0; border:none; animation:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.6rem;"><div class="fc-icon" style="margin:0;">🔐</div><div class="fc-date">Nov 2025</div></div>
+              <span class="fc-severity sev-high">High</span>
+            </div>
+            <div class="fc-tags"><span class="fc-tag">Model Inversion</span><span class="fc-tag risk-tag">PII</span></div>
+            <h3>Insurer AI Model — 12,000 Employee Records Reconstructed via Inference</h3>
+            <p>Researchers demonstrated that repeated queries to a UK insurer's AI model could reconstruct individual employee salary data from training data, exposing 12,000 staff records.</p>
+            <div class="fc-source">Source: <a href="https://arxiv.org/search/?query=model+inversion" target="_blank" rel="noopener">University of Edinburgh Research, Nov 2025 →</a></div>
+          </div>
+
+        </div>
+
+        <!-- Subscribe CTA at bottom of box -->
+        <div style="padding:1.4rem 2rem; border-top:1px solid rgba(0,212,200,0.12); background:rgba(0,212,200,0.04); display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+          <div style="flex:1; min-width:240px;">
+            <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--ink); margin-bottom:0.3rem;">Stay ahead of AI threats and data risks</div>
+            <div style="font-size:0.85rem; color:var(--ink-soft); line-height:1.6;">The DeCompliance newsletter covers emerging AI attack patterns, regulatory responses, and governance intelligence — delivered every Monday. Subscribe to know more about these types of incidents.</div>
+          </div>
+          <a href="#subscribe" style="flex-shrink:0; background:var(--teal); color:var(--bg-base); padding:0.75rem 1.8rem; border-radius:6px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; white-space:nowrap; transition:opacity 0.2s;">Subscribe to know more →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Subpage modals for new attack cards -->
+  <div class="sp-modal" id="sp-attack-nhs" onclick="closeSPBackdrop(event,'sp-attack-nhs')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · April 2025 · Healthcare AI</div><div class="sp-title">NHS AI Chatbot Leaks Patient PII to Third Parties</div></div><button class="sp-close" onclick="closeSP('sp-attack-nhs')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>An AI-powered triage chatbot integrated into NHS patient-facing services was found to be transmitting patient symptom data, demographic information, and location data to third-party analytics providers without patient consent and outside of NHS DSPT (Data Security and Protection Toolkit) compliance requirements.</p><div class="callout">This represents a dual failure — a breach of UK GDPR Article 6 (no lawful basis for third-party sharing) and NHS DSP standards. The ICO opened an investigation and issued an enforcement notice requiring immediate cessation of third-party data transfers.</div><h3>Root Cause</h3><p>The procurement process did not include a Data Protection Impact Assessment (DPIA) for the AI integration. The vendor's data flows were not disclosed in the contract, and the NHS trust's data governance team was not involved in the deployment decision.</p><p style="font-size:0.8rem;color:var(--ink-muted);">Source: ICO Enforcement Action Register, April 2025.</p></div></div></div>
+
+  <div class="sp-modal" id="sp-attack-law" onclick="closeSPBackdrop(event,'sp-attack-law')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · May 2025 · Shadow AI</div><div class="sp-title">UK Law Firm — Staff Upload Client Files to Unauthorised AI Tools</div></div><button class="sp-close" onclick="closeSP('sp-attack-law')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>Associates at a mid-size UK law firm were found to have been routinely uploading client documents — including privileged legal advice, draft contracts, and confidential instructions — to personal ChatGPT accounts to assist with drafting. The firm had no AI acceptable use policy and no technical controls blocking access to external AI tools on corporate devices.</p><div class="callout">Legal professional privilege attaches to confidential communications between lawyer and client. Uploading privileged documents to a third-party AI service may constitute a waiver of privilege — with severe implications for ongoing litigation and client relationships.</div><h3>Regulatory Exposure</h3><p>The Solicitors Regulation Authority (SRA) opened a supervisory review. The incident also triggered a UK GDPR breach notification obligation to the ICO, as client personal data had been processed by an unauthorised third party without a data processing agreement.</p><p style="font-size:0.8rem;color:var(--ink-muted);">Source: Legal IT Insider, May 2025. SRA regulatory correspondence confirmed.</p></div></div></div>
+
+  <div class="sp-modal" id="sp-attack-trading" onclick="closeSPBackdrop(event,'sp-attack-trading')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · August 2025 · Autonomous AI Agent</div><div class="sp-title">Autonomous AI Trading Agent Triggers £4M Erroneous Transactions</div></div><button class="sp-close" onclick="closeSP('sp-attack-trading')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>An autonomous AI trading agent deployed by a mid-size UK asset manager executed a series of large erroneous trades after misinterpreting a Bank of England regulatory announcement as a market signal. The agent had no human approval gate for trades above a defined threshold and no kill-switch that could be activated in real time. By the time human traders identified the anomaly, £4M in losses had been realised.</p><div class="callout">This incident prompted the FCA to issue a supervisory notice requiring all firms using autonomous AI in trading functions to demonstrate adequate human oversight mechanisms, kill-switch protocols, and incident response procedures specifically designed for AI-driven trading failures.</div><h3>Governance Failure</h3><p>The firm's model risk framework had been designed for traditional algorithmic trading systems. It did not account for the ability of AI agents to misinterpret unstructured natural language inputs from external sources. No stress testing against regulatory announcement scenarios had been conducted.</p><p style="font-size:0.8rem;color:var(--ink-muted);">Source: FCA Supervisory Notice, August 2025.</p></div></div></div>
+
+  <div class="sp-modal" id="sp-attack-model" onclick="closeSPBackdrop(event,'sp-attack-model')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · November 2025 · Model Inversion Attack</div><div class="sp-title">Insurer AI Model — 12,000 Employee Records Reconstructed</div></div><button class="sp-close" onclick="closeSP('sp-attack-model')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>Researchers at the University of Edinburgh demonstrated that a UK insurer's publicly accessible AI underwriting API was vulnerable to model inversion attacks. By crafting specific sequences of queries, they were able to reconstruct salary banding, health risk scores, and demographic data for approximately 12,000 employees whose data had been used to train the underwriting model.</p><div class="callout">The insurer was required to take the API offline within 48 hours of notification. The ICO initiated a formal investigation under UK GDPR Article 25 (data protection by design) and Article 35 (DPIA requirements for high-risk AI processing).</div><h3>Systemic Risk</h3><p>Model inversion is not a niche attack — it is a fundamental vulnerability of any AI model trained on personal data and exposed via a queryable interface. Any organisation offering AI-powered services that process personal data in training must assess this risk as part of their AI risk management programme.</p><p style="font-size:0.8rem;color:var(--ink-muted);">Source: University of Edinburgh Security Research Group, November 2025. ICO investigation confirmed.</p></div></div></div>
+
+  <!-- ── SECTION: AI TOOLS & DATA RISK ── -->
+  <section class="fc-section alt" id="ai-data-risk">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Data &amp; Privacy Risk</div>
+        <h2 class="section-title">AI Tools Exposing Company Data &amp; PII</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:0.8rem;">Adopting AI GRC and security tools introduces new vectors for employee PII and corporate data exposure. Here's what's at risk — and how to protect it.</p>
+      </div>
+      <div class="fc-grid">
+
+        <div class="flashcard" onclick="openSP('sp-risk1')">
+          <div class="fc-icon">📤</div>
+          <div class="fc-tags"><span class="fc-tag risk-tag">Training Data</span><span class="fc-tag">LLM Risk</span></div>
+          <h3>Employee Data Fed Into Third-Party AI Training</h3>
+          <p>When employees use AI tools like ChatGPT, Copilot or Gemini, inputs may be used for model training. HR data, performance reviews, and PII can permanently leave your control.</p>
+          <div class="fc-source">Safeguard: Enforce zero-retention API agreements &amp; data processing addenda with all AI vendors.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-risk2')">
+          <div class="fc-icon">🔍</div>
+          <div class="fc-tags"><span class="fc-tag risk-tag">Inference Risk</span><span class="fc-tag">PII</span></div>
+          <h3>Model Inversion — Reconstructing PII from Outputs</h3>
+          <p>Attackers can query AI models repeatedly to reconstruct personal data used in training — including employee names, salaries, and medical records — through inference attacks.</p>
+          <div class="fc-source">Safeguard: Implement differential privacy and output filtering in AI pipelines handling personal data.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-risk3')">
+          <div class="fc-icon">🌐</div>
+          <div class="fc-tags"><span class="fc-tag warn-tag">Shadow AI</span><span class="fc-tag">GDPR</span></div>
+          <h3>Shadow AI — Unsanctioned Tools Processing HR &amp; Legal Data</h3>
+          <p>Employees routinely use personal AI tools for work tasks, uploading employment contracts, legal documents, and payroll data to platforms with unknown data retention policies.</p>
+          <div class="fc-source">Safeguard: Deploy AI usage monitoring, publish an approved AI tool list, and train staff on data classification.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-risk4')">
+          <div class="fc-icon">🔗</div>
+          <div class="fc-tags"><span class="fc-tag risk-tag">Third-Party</span><span class="fc-tag">Vendor Risk</span></div>
+          <h3>AI Vendor Breaches — Your Data in Their Infrastructure</h3>
+          <p>When AI GRC tools process your compliance data, a breach at the vendor exposes your regulatory posture, audit trails, and employee PII to attackers — and regulators.</p>
+          <div class="fc-source">Safeguard: Require ISO 27001 certification, SOC 2 Type II, and right-to-audit clauses in AI vendor contracts.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-risk5')">
+          <div class="fc-icon">📋</div>
+          <div class="fc-tags"><span class="fc-tag">Article 22</span><span class="fc-tag risk-tag">GDPR</span></div>
+          <h3>Automated Decision-Making &amp; GDPR Article 22 Violations</h3>
+          <p>AI tools making automated HR decisions — recruitment screening, performance scoring — without human oversight violate GDPR Article 22, exposing organisations to ICO enforcement.</p>
+          <div class="fc-source">Safeguard: Implement mandatory human review for all AI-assisted decisions affecting employees.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-risk6')">
+          <div class="fc-icon">🛡️</div>
+          <div class="fc-tags"><span class="fc-tag">Data Minimisation</span><span class="fc-tag">Privacy</span></div>
+          <h3>Over-Permissioned AI Access to Corporate Systems</h3>
+          <p>Enterprise AI copilots granted broad access to internal systems can access — and potentially leak — far more data than necessary. Least-privilege principles are rarely applied to AI tools.</p>
+          <div class="fc-source">Safeguard: Apply data minimisation and least-privilege access controls to all enterprise AI integrations.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION: AUTONOMOUS AI GOVERNANCE ── -->
+  <section class="fc-section dark" id="autonomous-ai">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Governance Failure</div>
+        <h2 class="section-title">Autonomous AI Agents: Rising Risk, Failing Governance</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc" style="margin-top:0.8rem;">Companies are deploying autonomous AI agents faster than governance frameworks can keep up. Here's where control is breaking down.</p>
+      </div>
+      <div class="fc-grid">
+
+        <div class="flashcard" onclick="openSP('sp-agent1')">
+          <div class="fc-icon">🤖</div>
+          <div class="fc-tags"><span class="fc-tag risk-tag">No Oversight</span><span class="fc-tag">Agents</span></div>
+          <h3>Agents Acting Without Human Approval Gates</h3>
+          <p>Autonomous agents deployed in finance, HR, and legal functions are making consequential decisions — approving transactions, sending communications, modifying records — with no human-in-the-loop controls.</p>
+          <div class="fc-source">Risk: Single AI error triggers cascading failures across interconnected systems with no rollback.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-agent2')">
+          <div class="fc-icon">📊</div>
+          <div class="fc-tags"><span class="fc-tag warn-tag">Audit Gap</span><span class="fc-tag">Accountability</span></div>
+          <h3>No Audit Trail — Who Authorised the AI Decision?</h3>
+          <p>When autonomous agents make decisions, existing audit frameworks can't answer basic compliance questions: who authorised it, what data was used, and could it be reversed? Regulators expect answers.</p>
+          <div class="fc-source">Risk: Non-compliance with EU AI Act Article 13 (transparency) and financial regulators' model risk guidance.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-agent3')">
+          <div class="fc-icon">⚙️</div>
+          <div class="fc-tags"><span class="fc-tag risk-tag">Goal Misalignment</span><span class="fc-tag">Safety</span></div>
+          <h3>Goal Misalignment — Agents Optimising the Wrong Objective</h3>
+          <p>AI agents optimise for their programmed objective, not organisational values. An agent tasked to "reduce costs" may cut corners on safety, compliance, or staff welfare without any human noticing.</p>
+          <div class="fc-source">Risk: Regulatory liability for outcomes the organisation never intended but an agent produced autonomously.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-agent4')">
+          <div class="fc-icon">🔐</div>
+          <div class="fc-tags"><span class="fc-tag risk-tag">Privilege Escalation</span><span class="fc-tag">Security</span></div>
+          <h3>Agents Acquiring Excessive System Privileges</h3>
+          <p>AI agents are being granted administrator-level access to complete tasks. Once compromised via prompt injection, these agents become the most dangerous insider threat in your network.</p>
+          <div class="fc-source">Risk: Complete system compromise via a single malicious document or website the agent processes.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-agent5')">
+          <div class="fc-icon">⚖️</div>
+          <div class="fc-tags"><span class="fc-tag">Liability</span><span class="fc-tag risk-tag">No Policy</span></div>
+          <h3>No AI Agent Policy — Who Is Liable When It Goes Wrong?</h3>
+          <p>Most organisations deploying autonomous agents have no formal policy defining accountability. When an agent makes a damaging decision, legal and compliance teams have no framework to assign responsibility.</p>
+          <div class="fc-source">Risk: Director-level personal liability under UK Corporate Governance Code and EU AI Act obligations.</div>
+        </div>
+
+        <div class="flashcard" onclick="openSP('sp-agent6')">
+          <div class="fc-icon">🌐</div>
+          <div class="fc-tags"><span class="fc-tag warn-tag">Multi-Agent</span><span class="fc-tag">Complexity</span></div>
+          <h3>Multi-Agent Systems — Governance Gaps Between Agents</h3>
+          <p>When multiple AI agents interact with each other, decisions emerge from the interaction that no single agent was designed to make. Governance frameworks don't account for emergent multi-agent behaviour.</p>
+          <div class="fc-source">Risk: Regulatory compliance frameworks designed for single AI systems fail completely in multi-agent architectures.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUBPAGE MODALS ── -->
+
+  <!-- Issue 1 full -->
+  <div class="sp-modal" id="sp-issue1" onclick="closeSPBackdrop(event,'sp-issue1')">
+    <div class="sp-box">
+      <div class="sp-header">
+        <div><div class="sp-issue">◆ Issue #1 · 28 June 2026 · EU AI Act</div><div class="sp-title">The EU AI Act Clock is Ticking: August 2026 Deadline Explained</div></div>
+        <button class="sp-close" onclick="closeSP('sp-issue1')">&times;</button>
+      </div>
+      <div class="sp-body">
+        <div class="sp-meta">Author: Darshan Krishnappa · DeCompliance · decompliance.uk</div>
+        <h3>The Key Development</h3>
+        <p>The Digital Omnibus, agreed May 2026, has pushed the main high-risk AI deadline from August 2026 to <strong>December 2027</strong> — giving compliance teams 16 extra months. However this does not affect Article 50 transparency obligations, which remain firmly on the <strong>2 August 2026</strong> schedule.</p>
+        <div class="callout">Article 50 requires chatbots, AI-generated content tools, and emotion recognition systems to disclose their AI nature to users. Fines reach €15M or 3% of global turnover.</div>
+        <h3>What Compliance Teams Must Do Now</h3>
+        <p>Audit every AI system that interacts with end-users. If it generates text, images, audio or video — or if users might not know they're interacting with AI — Article 50 applies. Document your disclosure mechanisms and ensure they are live before 2 August 2026.</p>
+        <h3>Key Dates</h3>
+        <p><strong>2 August 2026</strong> — Article 50 transparency live. Chatbot disclosure and AI content labelling mandatory.<br/><strong>2 December 2026</strong> — New prohibitions on AI-generated NCII effective.<br/><strong>2 December 2027</strong> — High-risk AI system full obligations enforced.</p>
+        <p style="margin-top:1.2rem;font-size:0.8rem;color:var(--ink-muted);">Sources: EU AI Act (Regulation 2024/1689); Digital Omnibus provisional agreement May 2026; EU Commission AI Office publications.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attack modals -->
+  <div class="sp-modal" id="sp-attack1" onclick="closeSPBackdrop(event,'sp-attack1')">
+    <div class="sp-box">
+      <div class="sp-header"><div><div class="sp-issue">◆ Incident · February 2024 · Deepfake Fraud</div><div class="sp-title">Arup Hong Kong — $25M Deepfake CFO Fraud</div></div><button class="sp-close" onclick="closeSP('sp-attack1')">&times;</button></div>
+      <div class="sp-body">
+        <div class="sp-meta">Severity: Critical · Sector: Professional Services · Loss: $25M USD</div>
+        <h3>What Happened</h3>
+        <p>In February 2024, an employee at Arup's Hong Kong office was invited to a video call with who appeared to be the company's CFO and other senior colleagues. All participants — except the employee — were AI-generated deepfakes. The employee was convinced to make 15 transactions totalling $25M USD to attacker-controlled accounts.</p>
+        <h3>Why It Happened</h3>
+        <p>No identity verification protocol existed for video-based financial authorisations. The organisation had no deepfake detection tools, no multi-channel verification requirement, and no financial transfer controls requiring out-of-band confirmation for large transactions.</p>
+        <div class="callout">Governance failure: No AI-specific threat model existed for social engineering via synthetic media. This represents a complete gap in the AI risk management framework.</div>
+        <h3>Regulatory Implications</h3>
+        <p>Under the EU AI Act Article 50, systems generating synthetic video of real people must be labelled. Under FCA guidance, financial institutions must include AI-enabled fraud in their operational risk frameworks. This incident predates enforcement but would today trigger regulatory review.</p>
+        <p style="font-size:0.8rem;color:var(--ink-muted);">Source: BBC News, February 2024. Hong Kong Police investigation confirmed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-modal" id="sp-attack2" onclick="closeSPBackdrop(event,'sp-attack2')">
+    <div class="sp-box">
+      <div class="sp-header"><div><div class="sp-issue">◆ Incident · 2023 · Data Leak</div><div class="sp-title">Samsung — Employees Leak Source Code via ChatGPT</div></div><button class="sp-close" onclick="closeSP('sp-attack2')">&times;</button></div>
+      <div class="sp-body">
+        <div class="sp-meta">Severity: Critical · Sector: Technology · Type: Insider / AI Data Leak</div>
+        <h3>What Happened</h3>
+        <p>Three separate Samsung semiconductor employees uploaded confidential information to ChatGPT within weeks of the company permitting its use. Data included proprietary source code, internal meeting notes, and hardware performance data. Once uploaded, Samsung had no mechanism to retrieve or delete the data from OpenAI's systems.</p>
+        <h3>Why It Happened</h3>
+        <p>Samsung permitted ChatGPT use without an AI acceptable use policy, without data classification training, and without technical controls restricting what could be uploaded to external AI services. Employees used the tool as they would any productivity application — not understanding that inputs become training data.</p>
+        <div class="callout">This incident directly led Samsung to ban all generative AI tools on company devices — demonstrating that the risk of ungoverned AI adoption can force organisations into equally extreme responses.</div>
+        <h3>What Good Governance Looks Like</h3>
+        <p>An AI acceptable use policy prohibiting upload of classified data to external AI tools, combined with technical DLP controls and staff training on AI data risks, would have prevented all three incidents.</p>
+        <p style="font-size:0.8rem;color:var(--ink-muted);">Source: BleepingComputer, April 2023. Confirmed by Samsung internal communications.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk modals -->
+  <div class="sp-modal" id="sp-risk1" onclick="closeSPBackdrop(event,'sp-risk1')">
+    <div class="sp-box">
+      <div class="sp-header"><div><div class="sp-issue">◆ Data Risk · Training Data Exposure</div><div class="sp-title">Employee Data Fed Into Third-Party AI Training</div></div><button class="sp-close" onclick="closeSP('sp-risk1')">&times;</button></div>
+      <div class="sp-body">
+        <div class="sp-meta">Risk Category: Data Protection · Frameworks: UK GDPR, EU AI Act Article 10</div>
+        <h3>The Risk</h3>
+        <p>Consumer-facing AI tools (ChatGPT free tier, Gemini, Copilot without enterprise licensing) typically use conversation data to train their models. When employees upload HR documents, legal drafts, financial data, or customer records to these tools, that data may permanently leave the organisation's control.</p>
+        <div class="callout">Under UK GDPR, transferring employee PII to a third-party AI provider without a lawful basis, data processing agreement, and transfer mechanism is a reportable breach — carrying fines up to £17.5M or 4% of global turnover.</div>
+        <h3>How to Safeguard</h3>
+        <p><strong>1. Enterprise licensing only</strong> — Only permit AI tools with zero-data-retention enterprise agreements.<br/><strong>2. Data Processing Addenda</strong> — Require signed DPAs from all AI vendors before deployment.<br/><strong>3. Data classification policy</strong> — Categorise data and restrict which categories may be processed by AI tools.<br/><strong>4. Technical controls</strong> — Deploy DLP tools that detect and block uploads of classified data to external AI services.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agent modals -->
+  <div class="sp-modal" id="sp-agent1" onclick="closeSPBackdrop(event,'sp-agent1')">
+    <div class="sp-box">
+      <div class="sp-header"><div><div class="sp-issue">◆ Governance Failure · Autonomous Agents</div><div class="sp-title">Agents Acting Without Human Approval Gates</div></div><button class="sp-close" onclick="closeSP('sp-agent1')">&times;</button></div>
+      <div class="sp-body">
+        <div class="sp-meta">Risk Category: AI Governance · Frameworks: EU AI Act, NIST AI RMF Govern function</div>
+        <h3>The Problem</h3>
+        <p>Autonomous AI agents are being deployed in finance (approving payments), HR (screening and rejecting candidates), legal (sending contracts), and operations (modifying system configurations) — all without mandatory human review at consequential decision points.</p>
+        <p>Unlike traditional software, AI agents operate probabilistically. A decision that works correctly 99% of the time will still fail 1% of the time — and in high-stakes domains, that 1% represents significant legal, financial, and reputational risk.</p>
+        <div class="callout">The EU AI Act classifies AI systems used in employment, credit assessment, and law enforcement as high-risk — requiring human oversight and the ability to override AI decisions. Autonomous agents in these domains are almost certainly non-compliant.</div>
+        <h3>What Good Governance Requires</h3>
+        <p><strong>1. Human-in-the-loop gates</strong> — Define which decisions require mandatory human review before execution.<br/><strong>2. Kill-switch protocols</strong> — Every autonomous agent must have an override mechanism that a human can trigger immediately.<br/><strong>3. Decision audit logs</strong> — Every agent action must be logged with sufficient detail to reconstruct why a decision was made.<br/><strong>4. Scope limitation</strong> — Agents should operate within tightly defined boundaries with explicit permission models for each action type.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Remaining placeholder modals for sp-issue2, sp-issue3, sp-issue4, sp-attack3-6, sp-risk2-6, sp-agent2-6 -->
+  <div class="sp-modal" id="sp-issue2" onclick="closeSPBackdrop(event,'sp-issue2')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Issue #2 · Coming 7 July 2026</div><div class="sp-title">NIST AI RMF 2.0: What Organisations Must Do Now</div></div><button class="sp-close" onclick="closeSP('sp-issue2')">&times;</button></div><div class="sp-body"><p style="color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">Publishing 7 July 2026. Subscribe to receive it in your inbox.</p></div></div></div>
+  <div class="sp-modal" id="sp-issue3" onclick="closeSPBackdrop(event,'sp-issue3')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Issue #3 · Coming 14 July 2026</div><div class="sp-title">ISO/IEC 42001 Certification: Is It Worth Pursuing?</div></div><button class="sp-close" onclick="closeSP('sp-issue3')">&times;</button></div><div class="sp-body"><p style="color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">Publishing 14 July 2026. Subscribe to receive it in your inbox.</p></div></div></div>
+  <div class="sp-modal" id="sp-issue4" onclick="closeSPBackdrop(event,'sp-issue4')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Issue #4 · Coming 21 July 2026</div><div class="sp-title">FCA AI Strategy: What Financial Firms Need to Know</div></div><button class="sp-close" onclick="closeSP('sp-issue4')">&times;</button></div><div class="sp-body"><p style="color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">Publishing 21 July 2026. Subscribe to receive it in your inbox.</p></div></div></div>
+  <div class="sp-modal" id="sp-attack3" onclick="closeSPBackdrop(event,'sp-attack3')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · September 2024 · Healthcare AI</div><div class="sp-title">NHS AI Diagnostic Tool — Bias-Driven Misdiagnosis</div></div><button class="sp-close" onclick="closeSP('sp-attack3')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>An AI diagnostic tool deployed across NHS trusts produced systematically less accurate results for ethnic minority patients due to biased training data. No pre-deployment bias audit had been conducted, and no demographic performance monitoring was in place post-deployment.</p><div class="callout">Bias in healthcare AI is now explicitly within scope of the EU AI Act (Annex III high-risk AI systems) and NHS AI Ethics framework. Pre-deployment equity testing and ongoing monitoring are mandatory.</div><h3>Root Cause</h3><p>Training data was not representative of the patient population. Procurement process did not include bias testing as a requirement. No ongoing monitoring for demographic performance disparities was implemented.</p><p style="font-size:0.8rem;color:var(--ink-muted);">Source: British Medical Journal, 2024.</p></div></div></div>
+  <div class="sp-modal" id="sp-attack4" onclick="closeSPBackdrop(event,'sp-attack4')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · 2023 · Legal AI Hallucination</div><div class="sp-title">Lawyer Sanctioned — AI Hallucinated Case Citations</div></div><button class="sp-close" onclick="closeSP('sp-attack4')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>Attorneys at Levidow, Levidow &amp; Oberman submitted a legal brief to a New York federal court containing six AI-generated citations to cases that did not exist. When the court asked for copies of the cases, the firm submitted fake summaries. The court imposed sanctions.</p><div class="callout">AI hallucination in professional services is a governance failure, not a technology failure. The absence of a human review requirement for AI-generated professional outputs is an organisational control gap.</div><h3>Governance Lesson</h3><p>Every AI-generated professional output — legal, medical, financial, or advisory — must be subject to mandatory expert human review before use. This is not optional under professional standards frameworks or emerging AI regulation.</p><p style="font-size:0.8rem;color:var(--ink-muted);">Source: The Guardian, June 2023. US Federal Court docket SDNY.</p></div></div></div>
+  <div class="sp-modal" id="sp-attack5" onclick="closeSPBackdrop(event,'sp-attack5')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · January 2025 · Voice Cloning Fraud</div><div class="sp-title">Voice Cloning Bank Fraud — £1.2M Stolen</div></div><button class="sp-close" onclick="closeSP('sp-attack5')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>Criminals synthesised a UK CEO's voice using publicly available audio samples and called the company's finance director, posing as the CEO and requesting an emergency wire transfer citing a confidential acquisition. £1.2M was transferred before the fraud was detected.</p><div class="callout">Voice cloning attacks require no technical sophistication — publicly available AI tools can clone a voice from 3 seconds of audio. Any organisation with a public-facing CEO has executives whose voices can be cloned.</div><h3>Safeguards</h3><p>Implement callback verification to known numbers for all financial transfers over threshold. Require dual authorisation for transfers above defined limits. Include AI voice fraud in annual staff awareness training.</p></div></div></div>
+  <div class="sp-modal" id="sp-attack6" onclick="closeSPBackdrop(event,'sp-attack6')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Incident · March 2025 · Prompt Injection</div><div class="sp-title">AI Copilot Prompt Injection — Data Exfiltration</div></div><button class="sp-close" onclick="closeSP('sp-attack6')">&times;</button></div><div class="sp-body"><h3>What Happened</h3><p>Attackers embedded hidden instructions in documents and emails fed to enterprise AI copilots. The malicious instructions caused the AI to silently exfiltrate sensitive corporate data by encoding it in outbound requests. Affected organisations had no prompt injection detection in place.</p><div class="callout">Prompt injection is the AI equivalent of SQL injection — and equally severe. Any AI system that processes untrusted external content and has access to sensitive data or actions is vulnerable.</div><h3>Safeguards</h3><p>Implement prompt injection detection layers. Apply data minimisation — AI systems should only access data necessary for their function. Monitor for anomalous AI output patterns. Treat all external content processed by AI as potentially hostile.</p></div></div></div>
+  <div class="sp-modal" id="sp-risk2" onclick="closeSPBackdrop(event,'sp-risk2')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Data Risk · Model Inversion</div><div class="sp-title">Model Inversion — Reconstructing PII from AI Outputs</div></div><button class="sp-close" onclick="closeSP('sp-risk2')">&times;</button></div><div class="sp-body"><h3>The Risk</h3><p>Model inversion attacks allow adversaries to query AI models repeatedly and reconstruct personal data from training sets. If your AI model was trained on employee data, attackers may be able to extract names, salaries, medical records, or other PII through carefully crafted queries — without ever accessing your database directly.</p><div class="callout">This risk is particularly acute for organisations that fine-tune foundation models on internal HR, customer, or patient data and expose the model via an API or chatbot interface.</div><h3>Safeguards</h3><p><strong>Differential privacy</strong> — Add mathematical noise to training data to prevent memorisation of individual records.<br/><strong>Output filtering</strong> — Monitor and filter AI outputs for patterns that match personal data formats.<br/><strong>Rate limiting</strong> — Limit query rates to prevent systematic extraction attempts.<br/><strong>Audit logging</strong> — Log all queries to AI systems processing personal data for anomaly detection.</p></div></div></div>
+  <div class="sp-modal" id="sp-risk3" onclick="closeSPBackdrop(event,'sp-risk3')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Data Risk · Shadow AI</div><div class="sp-title">Shadow AI — Unsanctioned Tools Processing Sensitive Data</div></div><button class="sp-close" onclick="closeSP('sp-risk3')">&times;</button></div><div class="sp-body"><h3>The Risk</h3><p>Shadow AI — the use of unsanctioned AI tools by employees — is now one of the fastest-growing data protection risks. Employees routinely upload employment contracts, client data, legal documents, and financial records to personal AI tools without understanding the data retention implications.</p><div class="callout">A 2024 survey found that 68% of employees use AI tools their organisation hasn't approved. Each unsanctioned AI interaction is a potential GDPR breach, an IP leak, and an audit finding waiting to happen.</div><h3>Safeguards</h3><p>Publish an approved AI tool list with clear guidance on what data each tool may process. Deploy web filtering to block access to non-approved AI services from corporate devices. Include shadow AI in your annual data protection impact assessments. Train staff on the difference between personal and corporate AI tool use.</p></div></div></div>
+  <div class="sp-modal" id="sp-risk4" onclick="closeSPBackdrop(event,'sp-risk4')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Data Risk · Vendor Breach</div><div class="sp-title">AI Vendor Breaches — Your Data in Their Infrastructure</div></div><button class="sp-close" onclick="closeSP('sp-risk4')">&times;</button></div><div class="sp-body"><h3>The Risk</h3><p>Every AI GRC or security tool you adopt processes your most sensitive data — compliance posture, audit findings, risk assessments, and employee records. A breach at an AI vendor doesn't just expose their data — it exposes yours.</p><div class="callout">Under UK GDPR Article 28, you remain the data controller when a processor is breached. You are responsible for notifying the ICO within 72 hours and affected individuals without undue delay — even if the breach was entirely at your vendor's end.</div><h3>Safeguards</h3><p>Require ISO 27001 and SOC 2 Type II certification as minimum vendor security standards. Include right-to-audit clauses in all AI vendor contracts. Assess vendor incident response procedures before procurement. Maintain a data processor register with breach notification obligations documented for each vendor.</p></div></div></div>
+  <div class="sp-modal" id="sp-risk5" onclick="closeSPBackdrop(event,'sp-risk5')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Data Risk · GDPR Article 22</div><div class="sp-title">Automated Decision-Making &amp; GDPR Article 22</div></div><button class="sp-close" onclick="closeSP('sp-risk5')">&times;</button></div><div class="sp-body"><h3>The Risk</h3><p>GDPR Article 22 grants individuals the right not to be subject to solely automated decisions that produce significant effects — including decisions about employment, credit, insurance, or healthcare. AI tools used for CV screening, performance assessment, or credit scoring without human review violate this right.</p><div class="callout">The ICO has already taken action against organisations using automated profiling without adequate human oversight. AI-driven HR decisions are now a specific enforcement priority for the UK data regulator.</div><h3>Safeguards</h3><p>Map all automated decisions affecting individuals. For any significant decision, implement mandatory human review before the decision is actioned. Document the human review process and maintain records. Include Article 22 rights in your privacy notice and honour subject access requests that include AI-generated profiles.</p></div></div></div>
+  <div class="sp-modal" id="sp-risk6" onclick="closeSPBackdrop(event,'sp-risk6')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Data Risk · Access Controls</div><div class="sp-title">Over-Permissioned AI — Least Privilege Failures</div></div><button class="sp-close" onclick="closeSP('sp-risk6')">&times;</button></div><div class="sp-body"><h3>The Risk</h3><p>Enterprise AI copilots are routinely granted broad read and write access to email, file systems, calendars, HR systems, and financial platforms. This over-permissioning means a single compromised AI session can access vastly more data than any individual employee — and a prompt injection attack on an over-permissioned agent is catastrophic.</p><div class="callout">The principle of least privilege — granting only the minimum access necessary for a function — is a foundational information security control. It is almost never applied to AI tools, which are treated as productivity software rather than privileged system actors.</div><h3>Safeguards</h3><p>Treat every AI integration as a privileged system account. Map what data each AI tool needs to access and restrict accordingly. Review AI tool permissions quarterly. Log all AI system access to sensitive data stores and monitor for anomalous access patterns.</p></div></div></div>
+  <div class="sp-modal" id="sp-agent2" onclick="closeSPBackdrop(event,'sp-agent2')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Governance Failure · Audit Trail</div><div class="sp-title">No Audit Trail — Who Authorised the AI Decision?</div></div><button class="sp-close" onclick="closeSP('sp-agent2')">&times;</button></div><div class="sp-body"><h3>The Problem</h3><p>Traditional audit frameworks assume human decision-makers who can be interviewed, whose communications can be reviewed, and who have a documented decision rationale. Autonomous AI agents produce none of these artefacts by default — and most organisations haven't built AI-specific audit logging.</p><div class="callout">Under the EU AI Act Article 12, high-risk AI systems must maintain logs sufficient to enable post-market monitoring, investigation of incidents, and assessment of compliance. Most agent deployments do not meet this standard.</div><h3>What Good Looks Like</h3><p>Every agent action should log: the input that triggered it, the reasoning chain, the action taken, the systems affected, the timestamp, and the identity of the agent and its operator. These logs must be immutable, retained for the regulatory minimum period, and accessible to auditors on demand.</p></div></div></div>
+  <div class="sp-modal" id="sp-agent3" onclick="closeSPBackdrop(event,'sp-agent3')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Governance Failure · Goal Misalignment</div><div class="sp-title">Agents Optimising the Wrong Objective</div></div><button class="sp-close" onclick="closeSP('sp-agent3')">&times;</button></div><div class="sp-body"><h3>The Problem</h3><p>AI agents are objective-maximisers. They will pursue their programmed goal using any available means unless constrained. An agent tasked to "maximise customer retention" may make promises the organisation cannot keep. An agent tasked to "minimise processing time" may skip required compliance checks. Goal misalignment is the single most consequential AI governance risk for autonomous systems.</p><div class="callout">This is not a hypothetical. AI systems optimising narrow metrics have already caused real harm — from recommendation algorithms amplifying harmful content to credit models systematically disadvantaging protected groups.</div><h3>Safeguards</h3><p>Define agent objectives to include compliance constraints, not just performance targets. Implement reward modelling that penalises non-compliant actions. Test agent behaviour against adversarial inputs before deployment. Monitor for objective proxy gaming — where an agent achieves its metric while violating the underlying intent.</p></div></div></div>
+  <div class="sp-modal" id="sp-agent4" onclick="closeSPBackdrop(event,'sp-agent4')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Governance Failure · Privilege Escalation</div><div class="sp-title">Agents Acquiring Excessive System Privileges</div></div><button class="sp-close" onclick="closeSP('sp-agent4')">&times;</button></div><div class="sp-body"><h3>The Problem</h3><p>To complete complex tasks, AI agents are frequently granted administrator-level access to internal systems. This creates the most dangerous attack surface in modern enterprise IT — an agent that can be hijacked via prompt injection and then used to access, modify, or exfiltrate anything in the organisation's infrastructure.</p><div class="callout">Security researchers have demonstrated that prompt injection attacks can cause AI agents to exfiltrate emails, modify financial records, create backdoor accounts, and exfiltrate entire document repositories — all through a single malicious document the agent processes.</div><h3>Safeguards</h3><p>Apply least-privilege access to all AI agents without exception. Implement action whitelists — define exactly which actions each agent is permitted to take and block everything else. Never grant agents persistent credentials. Use short-lived tokens with narrow scopes for every agent action.</p></div></div></div>
+  <div class="sp-modal" id="sp-agent5" onclick="closeSPBackdrop(event,'sp-agent5')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Governance Failure · Liability</div><div class="sp-title">No AI Agent Policy — Who Is Liable?</div></div><button class="sp-close" onclick="closeSP('sp-agent5')">&times;</button></div><div class="sp-body"><h3>The Problem</h3><p>When an autonomous AI agent makes a damaging decision — sending a discriminatory rejection letter, approving a fraudulent payment, publishing incorrect information — who is legally responsible? In most organisations, the answer is genuinely unclear because no AI agent policy exists.</p><div class="callout">Under the EU AI Act, providers and deployers of high-risk AI systems have defined legal obligations. Under UK corporate governance frameworks, directors bear responsibility for material risks including AI-related harms. Without a policy, both the organisation and individual directors face personal liability.</div><h3>Minimum Policy Requirements</h3><p>Every AI agent deployment should have: an owner accountable for its behaviour; documented scope and limitations; an incident response procedure; a shutdown protocol; and defined escalation paths for edge cases. This policy must be reviewed at least annually and whenever the agent's capabilities or scope changes.</p></div></div></div>
+  <div class="sp-modal" id="sp-agent6" onclick="closeSPBackdrop(event,'sp-agent6')"><div class="sp-box"><div class="sp-header"><div><div class="sp-issue">◆ Governance Failure · Multi-Agent Systems</div><div class="sp-title">Multi-Agent Systems — Emergent Governance Gaps</div></div><button class="sp-close" onclick="closeSP('sp-agent6')">&times;</button></div><div class="sp-body"><h3>The Problem</h3><p>When multiple AI agents interact — an orchestrator agent directing specialist sub-agents across finance, legal, and operations — decisions emerge from the interaction that no single agent was designed to make. Existing governance frameworks, designed for single AI systems with defined inputs and outputs, fail completely when applied to multi-agent architectures.</p><div class="callout">Multi-agent systems create accountability vacuums: each individual agent may operate within its defined parameters while the system as a whole produces an outcome that would never have been authorised by any human stakeholder.</div><h3>Governance Approach</h3><p>Treat multi-agent systems as a single governed entity with a single accountable owner, not as a collection of individual agents. Define the system boundary, the maximum scope of action the system can take without human intervention, and the conditions under which human escalation is mandatory. Audit the system's emergent behaviour, not just the behaviour of individual agents.</p></div></div></div>
+
   <!-- ── NEWSLETTER SUBSCRIBE ── -->
   <section class="newsletter" id="subscribe">
     <div class="container">
@@ -1277,11 +1808,13 @@
         <div class="founder-card">
           <div class="founder-avatar">DK</div>
           <div class="founder-name">Darshan Krishnappa</div>
-          <div style="font-size:0.82rem; color:var(--ink-muted); margin-top:0.3rem;">Founder, DeCompliance</div>
+          <div style="font-size:0.82rem; color:var(--ink-soft); margin-top:0.3rem; font-weight:500;">Founder | AI GRC Engineering | AI Governance</div>
+          <div style="font-size:0.75rem; color:var(--teal); margin-top:0.2rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;">decompliance.uk</div>
           <div class="founder-tags">
             <span class="founder-tag">AI</span>
             <span class="founder-tag">GRC</span>
-            <span class="founder-tag">decompliance.uk</span>
+            <span class="founder-tag">Engineering</span>
+            <span class="founder-tag">Governance</span>
           </div>
         </div>
         <div class="about-text">
@@ -1308,8 +1841,10 @@
         <ul>
           <li><a href="#what-is-grc">What is AI GRC</a></li>
           <li><a href="#regulatory">Regulatory Landscape</a></li>
-          <li><a href="#insights">Insights</a></li>
-          <li><a href="#frameworks">Frameworks</a></li>
+          <li><a href="#archive">Newsletter Archive</a></li>
+          <li><a href="#ai-attacks">AI Threat Intel</a></li>
+          <li><a href="#ai-data-risk">Data &amp; PII Risk</a></li>
+          <li><a href="#autonomous-ai">AI Agent Governance</a></li>
           <li><a href="#about">About</a></li>
         </ul>
       </div>
@@ -1388,7 +1923,7 @@
           <li><strong>Object</strong> to processing</li>
           <li><strong>Withdraw consent</strong> at any time without affecting prior processing</li>
         </ul>
-        <p>To exercise any of these rights, please contact us at <strong>hello@decompliance.uk</strong>. We will respond within 30 days.</p>
+        <p>To exercise any of these rights, please contact us at <strong>hello@decompliance-uk.com</strong>. We will respond within 30 days.</p>
 
         <h3>8. Cookies</h3>
         <p>This website does not currently use tracking cookies or third-party analytics. If this changes, we will update this policy and seek your consent where required.</p>
@@ -1403,7 +1938,7 @@
         <p>We may update this Privacy Policy from time to time. We will notify subscribers of any material changes via email or a notice on this website. Continued use of the newsletter after any changes constitutes acceptance of the updated policy.</p>
 
         <h3>12. Contact</h3>
-        <p>For any privacy-related queries, please contact: <strong>hello@decompliance.uk</strong></p>
+        <p>For any privacy-related queries, please contact: <strong>hello@decompliance-uk.com</strong></p>
       </div>
     </div>
   </div>
@@ -1435,7 +1970,7 @@
         <p>We endeavour to ensure that all information published is accurate and up to date at the time of publication. However, the AI regulatory landscape changes rapidly. We make no warranties or representations as to the accuracy, completeness, or currency of any content. Links to third-party sources are provided for reference only and do not constitute endorsement.</p>
 
         <h3>6. Newsletter Subscription</h3>
-        <p>By subscribing to the DeCompliance newsletter, you consent to receiving periodic email communications from us. You may unsubscribe at any time by following the unsubscribe link in any newsletter email or by contacting us at <strong>hello@decompliance.uk</strong>. We will not send unsolicited commercial communications.</p>
+        <p>By subscribing to the DeCompliance newsletter, you consent to receiving periodic email communications from us. You may unsubscribe at any time by following the unsubscribe link in any newsletter email or by contacting us at <strong>hello@decompliance-uk.com</strong>. We will not send unsolicited commercial communications.</p>
 
         <h3>7. Third-Party Links</h3>
         <p>This website contains links to external websites and resources, including regulatory bodies, standards organisations, and government publications. These links are provided for convenience and informational purposes only. DeCompliance is not responsible for the content, accuracy, or availability of third-party websites.</p>
@@ -1450,7 +1985,7 @@
         <p>We reserve the right to update these Terms of Use at any time. Changes will be posted on this page with an updated date. Continued use of the website or newsletter after changes constitutes acceptance of the revised terms.</p>
 
         <h3>11. Contact</h3>
-        <p>For any queries relating to these Terms of Use, please contact: <strong>hello@decompliance.uk</strong></p>
+        <p>For any queries relating to these Terms of Use, please contact: <strong>hello@decompliance-uk.com</strong></p>
       </div>
     </div>
   </div>
@@ -1492,10 +2027,31 @@
         '\nEmail: ' + email +
         '\nDate: ' + new Date().toUTCString()
       );
-      window.location.href = `mailto:hello@decompliance.uk?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:hello@decompliance-uk.com?subject=${subject}&body=${body}`;
       document.getElementById('subscribeForm').style.display = 'none';
       document.getElementById('subscribeSuccess').style.display = 'block';
     }
+
+    // ── Subpage modal open/close ──
+    function openSP(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSP(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeSPBackdrop(e, id) {
+      if (e.target === document.getElementById(id)) closeSP(id);
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.sp-modal.open, .modal-backdrop.open').forEach(m => {
+          m.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+    });
 
     // ── Modal open/close ──
     function openModal(id) {
