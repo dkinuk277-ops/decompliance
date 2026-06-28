@@ -489,6 +489,57 @@
     .topic-text strong { display: block; font-size: 0.92rem; color: var(--ink); font-weight: 600; }
     .topic-text span { font-size: 0.82rem; color: var(--ink-muted); }
 
+    /* ── MAILCHIMP FORM OVERRIDES ── */
+    #mc_embed_signup {
+      background: transparent !important;
+      font-family: 'Inter', sans-serif !important;
+      color: var(--ink) !important;
+      width: 100%;
+    }
+    #mc_embed_signup_scroll {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mc-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .mc-field-group label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .mc-field-group input {
+      background: rgba(0,212,200,0.06) !important;
+      border: 1px solid var(--teal-border) !important;
+      color: var(--ink) !important;
+      border-radius: 6px !important;
+      padding: 0.7rem 1rem !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.9rem !important;
+      outline: none !important;
+      transition: border-color 0.2s !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .mc-field-group input::placeholder { color: var(--ink-muted) !important; }
+    .mc-field-group input:focus { border-color: var(--teal) !important; }
+    .asterisk { color: var(--teal); }
+    #mce-error-response {
+      color: #f87171 !important;
+      font-size: 0.85rem !important;
+      padding: 0.5rem 0 !important;
+    }
+    #mce-success-response {
+      color: var(--teal) !important;
+      font-size: 0.85rem !important;
+      padding: 0.5rem 0 !important;
+    }
+
     /* ── NEWSLETTER ── */
     .newsletter {
       padding: 6rem 0;
@@ -1092,28 +1143,36 @@
         </p>
       </div>
       <div class="subscribe-box">
-        <div id="subscribeForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name"/>
+        <!-- Mailchimp embedded form -->
+        <div id="mc_embed_signup">
+          <div id="mc_embed_signup_scroll">
+            <div class="mc-field-group">
+              <label for="mce-FNAME">First Name</label>
+              <input type="text" name="FNAME" id="mce-FNAME" placeholder="Jane" autocomplete="given-name"/>
             </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name"/>
+            <div class="mc-field-group">
+              <label for="mce-LNAME">Last Name</label>
+              <input type="text" name="LNAME" id="mce-LNAME" placeholder="Smith" autocomplete="family-name"/>
             </div>
+            <div class="mc-field-group">
+              <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+              <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="jane@yourorganisation.com" required autocomplete="email"/>
+            </div>
+            <div id="mce-responses">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>
+            <div aria-hidden="true" style="position:absolute;left:-5000px;">
+              <input type="text" name="b_2a4b60e1a7d31aac8844c6c0d_5ac425c7d96c4537313d30723" tabindex="-1" value=""/>
+            </div>
+            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="subscribe-btn">
+              Join the DeCompliance Community →
+            </button>
+            <p class="subscribe-note">No spam. Unsubscribe anytime. Weekly AI GRC intelligence only.</p>
           </div>
-          <div class="form-group" style="margin-bottom:1rem;">
-            <label for="emailInput">Email Address</label>
-            <input type="email" id="emailInput" placeholder="jane@yourorganisation.com" autocomplete="email"/>
-          </div>
-          <button class="subscribe-btn" onclick="handleSubscribe()">Join the DeCompliance Community →</button>
-          <p class="subscribe-note">No spam. Unsubscribe anytime. Weekly AI GRC intelligence only.</p>
         </div>
-        <div class="subscribe-success" id="subscribeSuccess">
-          <h3>You're on the list! ✦</h3>
-          <p>Welcome to DeCompliance. Your first issue will arrive next week. Look out for it in your inbox — or check your spam folder just in case.</p>
-        </div>
+        <!-- Mailchimp script -->
+        <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/2a4b60e1a7d31aac8844c6c0d/5ac425c7d96c4537313d30723.js");</script>
       </div>
     </div>
   </section>
