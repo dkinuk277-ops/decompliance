@@ -489,57 +489,6 @@
     .topic-text strong { display: block; font-size: 0.92rem; color: var(--ink); font-weight: 600; }
     .topic-text span { font-size: 0.82rem; color: var(--ink-muted); }
 
-    /* ── MAILCHIMP FORM OVERRIDES ── */
-    #mc_embed_signup {
-      background: transparent !important;
-      font-family: 'Inter', sans-serif !important;
-      color: var(--ink) !important;
-      width: 100%;
-    }
-    #mc_embed_signup_scroll {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .mc-field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .mc-field-group label {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--ink-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .mc-field-group input {
-      background: rgba(0,212,200,0.06) !important;
-      border: 1px solid var(--teal-border) !important;
-      color: var(--ink) !important;
-      border-radius: 6px !important;
-      padding: 0.7rem 1rem !important;
-      font-family: 'Inter', sans-serif !important;
-      font-size: 0.9rem !important;
-      outline: none !important;
-      transition: border-color 0.2s !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-    }
-    .mc-field-group input::placeholder { color: var(--ink-muted) !important; }
-    .mc-field-group input:focus { border-color: var(--teal) !important; }
-    .asterisk { color: var(--teal); }
-    #mce-error-response {
-      color: #f87171 !important;
-      font-size: 0.85rem !important;
-      padding: 0.5rem 0 !important;
-    }
-    #mce-success-response {
-      color: var(--teal) !important;
-      font-size: 0.85rem !important;
-      padding: 0.5rem 0 !important;
-    }
-
     /* ── NEWSLETTER ── */
     .newsletter {
       padding: 6rem 0;
@@ -554,52 +503,42 @@
       pointer-events: none;
     }
     .subscribe-box {
-      max-width: 560px; margin: 3rem auto 0;
+      max-width: 520px; margin: 2rem auto 0;
       background: rgba(0,212,200,0.04);
       border: 1px solid var(--teal-border);
-      border-radius: 14px; padding: 2.5rem;
+      border-radius: 14px; padding: 2.2rem;
     }
-    .form-row {
+    .mc-row-two {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 1rem; margin-bottom: 1rem;
     }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-group label {
-      font-size: 0.78rem; font-weight: 500;
+    .mc-field-block { display: flex; flex-direction: column; gap: 0.4rem; }
+    .mc-field-block label {
+      font-size: 0.75rem; font-weight: 500;
       color: var(--ink-muted);
-      text-transform: uppercase; letter-spacing: 0.06em;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      font-family: 'JetBrains Mono', monospace;
     }
-    .form-group input {
+    .mc-field-block input {
       background: rgba(0,212,200,0.06);
       border: 1px solid var(--teal-border);
       color: var(--ink); border-radius: 6px;
       padding: 0.7rem 1rem;
       font-family: 'Inter', sans-serif; font-size: 0.9rem;
-      outline: none; transition: border-color 0.2s;
+      outline: none; transition: border-color 0.2s; width: 100%;
     }
-    .form-group input::placeholder { color: var(--ink-muted); }
-    .form-group input:focus { border-color: var(--teal); }
-    .subscribe-btn {
+    .mc-field-block input::placeholder { color: var(--ink-muted); }
+    .mc-field-block input:focus { border-color: var(--teal); }
+    .mc-submit-btn {
       width: 100%; background: var(--teal);
       color: var(--bg-base); border: none; cursor: pointer;
-      padding: 0.9rem; border-radius: 6px;
+      padding: 0.85rem; border-radius: 6px;
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.02em;
       transition: opacity 0.2s, transform 0.15s;
-      margin-top: 0.5rem;
     }
-    .subscribe-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .subscribe-note {
-      text-align: center; font-size: 0.75rem;
-      color: var(--ink-muted); margin-top: 1rem;
-    }
-    .subscribe-success { display: none; text-align: center; padding: 1.5rem; }
-    .subscribe-success h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--teal); font-size: 1.3rem; margin-bottom: 0.5rem;
-    }
-    .subscribe-success p { color: var(--ink-soft); font-size: 0.88rem; }
+    .mc-submit-btn:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+    .mc-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     /* ── ABOUT ── */
     .about {
@@ -1669,134 +1608,77 @@
         <div class="section-eyebrow">Stay Informed</div>
         <h2 class="section-title">Subscribe to the Newsletter</h2>
         <div class="section-divider"></div>
-        <p class="section-desc" style="margin-top:1rem;">
-          Join compliance professionals, risk managers, legal counsel, and AI practitioners who read DeCompliance every week to stay ahead of the curve.
-        </p>
       </div>
       <div class="subscribe-box">
 
-        <!-- Mailchimp Form -->
-        <div id="mc_embed_signup">
-          <form id="mc-embedded-subscribe-form" novalidate>
-            <div id="mc_embed_signup_scroll">
-              <div class="mc-field-group">
-                <label for="mce-FNAME">First Name</label>
-                <input type="text" name="FNAME" id="mce-FNAME" placeholder="Jane" autocomplete="given-name"/>
-              </div>
-              <div class="mc-field-group">
-                <label for="mce-LNAME">Last Name</label>
-                <input type="text" name="LNAME" id="mce-LNAME" placeholder="Smith" autocomplete="family-name"/>
-              </div>
-              <div class="mc-field-group">
-                <label for="mce-COMPANY">Company <span style="color:var(--ink-muted);font-size:0.75rem;">(optional)</span></label>
-                <input type="text" name="COMPANY" id="mce-COMPANY" placeholder="Your organisation"/>
-              </div>
-              <div class="mc-field-group">
-                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-                <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="jane@yourorganisation.com" autocomplete="email"/>
-              </div>
-              <div id="mc-form-error" style="display:none; color:#f87171; font-size:0.85rem; padding:0.4rem 0; margin-bottom:0.5rem;"></div>
-              <button type="submit" id="mc-embedded-subscribe" class="subscribe-btn">
-                Join the DeCompliance Community →
-              </button>
-              <p class="subscribe-note">No spam. Unsubscribe anytime. Weekly AI GRC intelligence only.</p>
+        <div id="mc-form-wrap">
+          <div class="mc-row-two">
+            <div class="mc-field-block">
+              <label for="mce-FNAME">First Name</label>
+              <input type="text" id="mce-FNAME" placeholder="Jane" autocomplete="given-name"/>
             </div>
-          </form>
+            <div class="mc-field-block">
+              <label for="mce-LNAME">Last Name</label>
+              <input type="text" id="mce-LNAME" placeholder="Smith" autocomplete="family-name"/>
+            </div>
+          </div>
+          <div class="mc-field-block" style="margin-bottom:1rem;">
+            <label for="mce-EMAIL">Email Address <span style="color:var(--teal)">*</span></label>
+            <input type="email" id="mce-EMAIL" placeholder="jane@yourorganisation.com" autocomplete="email"/>
+          </div>
+          <div id="mc-error" style="display:none;color:#f87171;font-size:0.85rem;margin-bottom:0.6rem;"></div>
+          <button class="mc-submit-btn" id="mc-submit" onclick="mcSubmit()">Join the DeCompliance Community →</button>
         </div>
 
-        <!-- Acknowledgement — shown on successful submit -->
-        <div id="subscribe-ack" style="display:none; text-align:center; padding:2.5rem 1rem;">
-          <div style="font-size:3rem; margin-bottom:1rem; color:var(--teal);">✦</div>
-          <h3 style="font-family:'Playfair Display',serif; color:var(--teal); font-size:1.5rem; margin-bottom:0.8rem;">Thank you for subscribing!</h3>
-          <p style="color:var(--ink-soft); font-size:0.95rem; line-height:1.8; max-width:400px; margin:0 auto;">
-            Welcome to DeCompliance. 🎉<br/>
-            Please check your inbox for a confirmation email and click the link to activate your subscription. Your first issue will arrive shortly.
-          </p>
+        <div id="mc-success" style="display:none;text-align:center;padding:2rem 1rem;">
+          <div style="font-size:2.5rem;color:var(--teal);margin-bottom:0.8rem;">✦</div>
+          <h3 style="font-family:'Playfair Display',serif;color:var(--teal);font-size:1.4rem;margin-bottom:0.6rem;">Thank you for subscribing!</h3>
+          <p style="color:var(--ink-soft);font-size:0.9rem;line-height:1.8;max-width:380px;margin:0 auto;">Welcome to DeCompliance. Check your inbox for a confirmation email and click the link to activate your subscription.</p>
         </div>
 
         <script>
-          // JSONP callback — called by Mailchimp after submission
-          window.mcCallback = function(data) {
-            var form   = document.getElementById('mc_embed_signup');
-            var ack    = document.getElementById('subscribe-ack');
-            var errBox = document.getElementById('mc-form-error');
-            var btn    = document.getElementById('mc-embedded-subscribe');
-
-            btn.textContent = 'Join the DeCompliance Community →';
+          window.mcJsonpCallback = function(data) {
+            var btn = document.getElementById('mc-submit');
+            var err = document.getElementById('mc-error');
             btn.disabled = false;
-
-            if (data.result === 'success') {
-              form.style.display = 'none';
-              ack.style.display  = 'block';
+            btn.textContent = 'Join the DeCompliance Community →';
+            if (data.result === 'success' || (data.msg && data.msg.indexOf('already subscribed') !== -1)) {
+              document.getElementById('mc-form-wrap').style.display = 'none';
+              document.getElementById('mc-success').style.display = 'block';
             } else {
-              // Strip Mailchimp's numeric error prefix e.g. "0 - "
               var msg = data.msg ? data.msg.replace(/^\d+ - /, '') : 'Something went wrong. Please try again.';
-              // Handle "already subscribed" nicely
-              if (msg.indexOf('already subscribed') !== -1) {
-                form.style.display = 'none';
-                ack.style.display  = 'block';
-              } else {
-                errBox.innerHTML = msg;
-                errBox.style.display = 'block';
-              }
+              err.textContent = msg;
+              err.style.display = 'block';
             }
           };
 
-          document.addEventListener('DOMContentLoaded', function() {
-            var form = document.getElementById('mc-embedded-subscribe-form');
-            if (!form) return;
+          function mcSubmit() {
+            var fname = document.getElementById('mce-FNAME').value.trim();
+            var lname = document.getElementById('mce-LNAME').value.trim();
+            var email = document.getElementById('mce-EMAIL').value.trim();
+            var err   = document.getElementById('mc-error');
+            var btn   = document.getElementById('mc-submit');
 
-            form.addEventListener('submit', function(e) {
-              e.preventDefault();
+            err.style.display = 'none';
+            if (!email) { err.textContent = 'Please enter your email address.'; err.style.display = 'block'; return; }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Please enter a valid email address.'; err.style.display = 'block'; return; }
 
-              var email   = document.getElementById('mce-EMAIL').value.trim();
-              var fname   = document.getElementById('mce-FNAME').value.trim();
-              var lname   = document.getElementById('mce-LNAME').value.trim();
-              var company = document.getElementById('mce-COMPANY').value.trim();
-              var errBox  = document.getElementById('mc-form-error');
-              var btn     = document.getElementById('mc-embedded-subscribe');
+            btn.disabled = true;
+            btn.textContent = 'Subscribing…';
 
-              // Basic validation
-              errBox.style.display = 'none';
-              if (!email) {
-                errBox.innerHTML = 'Please enter your email address.';
-                errBox.style.display = 'block';
-                return;
-              }
-              var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-              if (!emailRe.test(email)) {
-                errBox.innerHTML = 'Please enter a valid email address.';
-                errBox.style.display = 'block';
-                return;
-              }
-
-              // Show loading state
-              btn.textContent = 'Subscribing…';
-              btn.disabled = true;
-
-              // Build Mailchimp JSONP URL
-              var base = 'https://decompliance.us16.list-manage.com/subscribe/post-json';
-              var params = '?u=2a4b60e1a7d31aac8844c6c0d'
-                         + '&id=1b5f4532bc'
-                         + '&f_id=009cc2e1f0'
-                         + '&EMAIL=' + encodeURIComponent(email)
-                         + '&FNAME=' + encodeURIComponent(fname)
-                         + '&LNAME=' + encodeURIComponent(lname)
-                         + '&COMPANY=' + encodeURIComponent(company)
-                         + '&c=mcCallback';
-
-              // Inject script tag for JSONP
-              var script = document.createElement('script');
-              script.src = base + params;
-              script.id  = 'mc-jsonp';
-              // Remove old script tag if present
-              var old = document.getElementById('mc-jsonp');
-              if (old) old.parentNode.removeChild(old);
-              document.body.appendChild(script);
-            });
-          });
+            var old = document.getElementById('mc-jsonp-script');
+            if (old) old.remove();
+            var s = document.createElement('script');
+            s.id  = 'mc-jsonp-script';
+            s.src = 'https://decompliance.us16.list-manage.com/subscribe/post-json'
+                  + '?u=2a4b60e1a7d31aac8844c6c0d&id=1b5f4532bc&f_id=009cc2e1f0'
+                  + '&EMAIL=' + encodeURIComponent(email)
+                  + '&FNAME=' + encodeURIComponent(fname)
+                  + '&LNAME=' + encodeURIComponent(lname)
+                  + '&c=mcJsonpCallback';
+            document.body.appendChild(s);
+          }
         </script>
-
       </div>
     </div>
   </section>
