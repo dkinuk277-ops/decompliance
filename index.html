@@ -89,7 +89,7 @@
     nav {
       position: sticky; top: 36px; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5vw; height: 68px;
+      padding: 0 5vw; height: 76px;
       background: rgba(10,15,30,0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--teal-border);
@@ -102,13 +102,12 @@
     }
     .nav-logo span { color: var(--teal); }
     .nav-tagline {
-      font-size: 0.65rem;
-      color: var(--ink-muted);
+      font-size: 0.62rem;
+      color: var(--teal);
       font-family: 'JetBrains Mono', monospace;
-      letter-spacing: 0.04em;
-      margin-left: 0.6rem;
-      padding-left: 0.6rem;
-      border-left: 1px solid var(--teal-border);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
     }
     .nav-brand { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -558,11 +557,9 @@
     }
     .founder-avatar {
       width: 80px; height: 80px;
-      background: linear-gradient(135deg, var(--teal), var(--navy-mid));
-      border-radius: 50%; margin: 0 auto 1.2rem;
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem; font-weight: 700; color: var(--bg-base);
+      margin: 0 auto 1.2rem;
     }
     .founder-name {
       font-family: 'Playfair Display', serif;
@@ -843,8 +840,29 @@
   <!-- ── NAVIGATION ── -->
   <nav>
     <div class="nav-brand">
-      <a href="#" class="nav-logo">De<span>Compliance</span></a>
-      <span class="nav-tagline">Decoding Compliance, Risk &amp; Regulation</span>
+      <!-- Option F logo icon -->
+      <svg width="44" height="44" viewBox="0 0 76 76" role="img" aria-label="DeCompliance logo" style="flex-shrink:0;">
+        <title>DeCompliance</title>
+        <defs>
+          <clipPath id="nav-dclip">
+            <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z"/>
+          </clipPath>
+        </defs>
+        <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z" fill="rgba(0,212,200,0.08)" stroke="#00D4C8" stroke-width="2.5"/>
+        <rect x="8" y="4" width="6" height="68" fill="#00D4C8"/>
+        <g clip-path="url(#nav-dclip)" opacity="0.2">
+          <line x1="8" y1="4" x2="72" y2="72" stroke="#00D4C8" stroke-width="12"/>
+          <line x1="72" y1="4" x2="8" y2="72" stroke="#00D4C8" stroke-width="12"/>
+          <line x1="8" y1="38" x2="72" y2="38" stroke="#00D4C8" stroke-width="12"/>
+          <line x1="40" y1="4" x2="40" y2="72" stroke="#00D4C8" stroke-width="12"/>
+        </g>
+        <circle cx="55" cy="38" r="10" fill="rgba(0,212,200,0.12)" stroke="#00D4C8" stroke-width="2"/>
+        <circle cx="55" cy="38" r="4" fill="#00D4C8"/>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:1px;margin-left:0.7rem;">
+        <a href="#" class="nav-logo">De<span>Compliance</span></a>
+        <span class="nav-tagline" style="border-left:none;padding-left:0;margin-left:0;">Decoding Compliance, Risk &amp; Regulation</span>
+      </div>
     </div>
     <ul class="nav-links">
       <li><a href="#what-is-grc">AI GRC</a></li>
@@ -1688,10 +1706,29 @@
     <div class="container">
       <div class="about-inner">
         <div class="founder-card">
-          <div class="founder-avatar">DK</div>
+          <div class="founder-avatar" style="background:transparent;border:none;">
+            <svg width="72" height="72" viewBox="0 0 76 76" role="img" aria-label="DeCompliance logo">
+              <title>DeCompliance</title>
+              <defs>
+                <clipPath id="founder-dclip">
+                  <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z"/>
+                </clipPath>
+              </defs>
+              <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z" fill="rgba(0,212,200,0.1)" stroke="#00D4C8" stroke-width="2.5"/>
+              <rect x="8" y="4" width="6" height="68" fill="#00D4C8"/>
+              <g clip-path="url(#founder-dclip)" opacity="0.22">
+                <line x1="8" y1="4" x2="72" y2="72" stroke="#00D4C8" stroke-width="12"/>
+                <line x1="72" y1="4" x2="8" y2="72" stroke="#00D4C8" stroke-width="12"/>
+                <line x1="8" y1="38" x2="72" y2="38" stroke="#00D4C8" stroke-width="12"/>
+                <line x1="40" y1="4" x2="40" y2="72" stroke="#00D4C8" stroke-width="12"/>
+              </g>
+              <circle cx="55" cy="38" r="10" fill="rgba(0,212,200,0.15)" stroke="#00D4C8" stroke-width="2"/>
+              <circle cx="55" cy="38" r="4" fill="#00D4C8"/>
+            </svg>
+          </div>
           <div class="founder-name">Darshan Krishnappa</div>
           <div style="font-size:0.82rem; color:var(--ink-soft); margin-top:0.3rem; font-weight:500;">Founder | AI GRC Engineering | AI Governance</div>
-          <div style="font-size:0.75rem; color:var(--teal); margin-top:0.2rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;">decompliance.uk</div>
+          <a href="https://www.decompliance.uk" target="_blank" rel="noopener" style="font-size:0.78rem; color:var(--teal); margin-top:0.3rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em; text-decoration:none; display:inline-block; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">www.decompliance.uk ↗</a>
           <div class="founder-tags">
             <span class="founder-tag">AI</span>
             <span class="founder-tag">GRC</span>
@@ -1714,8 +1751,30 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="nav-logo">De<span style="color:var(--teal)">Compliance</span></a>
-        <div class="footer-tagline">Decoding Compliance, Risk &amp; Regulation</div>
+        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.6rem;">
+          <svg width="48" height="48" viewBox="0 0 76 76" role="img" aria-label="DeCompliance logo" style="flex-shrink:0;">
+            <title>DeCompliance</title>
+            <defs>
+              <clipPath id="footer-dclip">
+                <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z"/>
+              </clipPath>
+            </defs>
+            <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z" fill="rgba(0,212,200,0.08)" stroke="#00D4C8" stroke-width="2.5"/>
+            <rect x="8" y="4" width="6" height="68" fill="#00D4C8"/>
+            <g clip-path="url(#footer-dclip)" opacity="0.2">
+              <line x1="8" y1="4" x2="72" y2="72" stroke="#00D4C8" stroke-width="12"/>
+              <line x1="72" y1="4" x2="8" y2="72" stroke="#00D4C8" stroke-width="12"/>
+              <line x1="8" y1="38" x2="72" y2="38" stroke="#00D4C8" stroke-width="12"/>
+              <line x1="40" y1="4" x2="40" y2="72" stroke="#00D4C8" stroke-width="12"/>
+            </g>
+            <circle cx="55" cy="38" r="10" fill="rgba(0,212,200,0.12)" stroke="#00D4C8" stroke-width="2"/>
+            <circle cx="55" cy="38" r="4" fill="#00D4C8"/>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <a href="#" class="nav-logo" style="font-size:1.3rem;">De<span style="color:var(--teal)">Compliance</span></a>
+            <div class="footer-tagline" style="margin:0;">Decoding Compliance, Risk &amp; Regulation</div>
+          </div>
+        </div>
         <p>AI Governance, Risk &amp; Compliance intelligence for practitioners navigating the future of regulated AI. Published from the UK.</p>
       </div>
       <div class="footer-col">
@@ -1743,9 +1802,29 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div>
-        <div class="footer-bottom-tagline">Decoding Compliance, Risk &amp; Regulation</div>
-        <div style="margin-top:0.3rem;">© 2026 DeCompliance · <strong>decompliance.uk</strong> · Founder: Darshan Krishnappa</div>
+      <div style="display:flex;align-items:center;gap:0.8rem;">
+        <svg width="28" height="28" viewBox="0 0 76 76" role="img" aria-label="DeCompliance" style="flex-shrink:0;opacity:0.7;">
+          <title>DeCompliance</title>
+          <defs>
+            <clipPath id="bottom-dclip">
+              <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z"/>
+            </clipPath>
+          </defs>
+          <path d="M8,4 L30,4 C58,4 72,18 72,38 C72,58 58,72 30,72 L8,72 Z" fill="rgba(0,212,200,0.08)" stroke="#00D4C8" stroke-width="2.5"/>
+          <rect x="8" y="4" width="6" height="68" fill="#00D4C8"/>
+          <g clip-path="url(#bottom-dclip)" opacity="0.2">
+            <line x1="8" y1="4" x2="72" y2="72" stroke="#00D4C8" stroke-width="12"/>
+            <line x1="72" y1="4" x2="8" y2="72" stroke="#00D4C8" stroke-width="12"/>
+            <line x1="8" y1="38" x2="72" y2="38" stroke="#00D4C8" stroke-width="12"/>
+            <line x1="40" y1="4" x2="40" y2="72" stroke="#00D4C8" stroke-width="12"/>
+          </g>
+          <circle cx="55" cy="38" r="10" fill="rgba(0,212,200,0.12)" stroke="#00D4C8" stroke-width="2"/>
+          <circle cx="55" cy="38" r="4" fill="#00D4C8"/>
+        </svg>
+        <div>
+          <div class="footer-bottom-tagline">Decoding Compliance, Risk &amp; Regulation</div>
+          <div style="margin-top:0.2rem;">© 2026 DeCompliance · <strong>decompliance.uk</strong> · Founder: Darshan Krishnappa</div>
+        </div>
       </div>
       <span>
         <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> &nbsp;·&nbsp;
